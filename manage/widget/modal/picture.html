@@ -1,0 +1,28 @@
+<div class="modal-header">
+    图片设置
+</div>
+<div class="picture modal-body">
+    <div class="row">
+        <div class="col-xs-12 primary">
+            <div tabset type="tab-bar">
+                <div tab heading="本地上传">
+                    <div ng-include="'widget/modal/piclocal.html'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="picture modal-footer">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="text-left">
+                {{remindMessage}}
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="(selected.items.length == 0)">确认</button>
+            <button class="btn btn-default" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>

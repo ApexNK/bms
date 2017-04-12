@@ -1,0 +1,106 @@
+<div class="row content-title">
+    <div ec-path-info></div>
+</div>
+<div class="row wrapper bg-color">
+    <div tabset type="tab-bar">
+        <div tab heading="商户列表" active="activeFlag[0]">
+            <div class="padder-v clearfix">
+                <div class="col-xs-12 no-padder table-toolbar clearfix">
+                    <div class="pull-right btn-group" role="group">
+                        <button type="button" class="btn btn-sm btn-success" ng-click="search()" title="刷新">
+                            <i class="ec ec-refresh"></i>
+                        </button>
+                    </div>
+                    <div class="search-bar">
+                        <button type="button" class="btn btn-stamp"
+                                ng-click="SearchControl.IsAdvance= !SearchControl.IsAdvance">
+                            高级<br>搜索
+                        </button>
+                    </div>
+                    <div class="input-bar">
+                        <div class="input-group clearfix">
+                            <input type="text" class="form-control" placeholder="请输入商户名称"
+                                   ng-model="SearchControl.DealerName">
+                            <span class="input-group-addon" ng-click="search()">搜索</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 form-horizontal advance-search" ng-show="SearchControl.IsAdvance">
+                    <div class="col-xs-10">
+                        <div class="search-cell clearfix">
+                            <label class="control-label">商户名称：</label>
+                            <input type="text" class="form-control" placeholder="请输入商户名称"
+                                   ng-model="SearchControl.DealerName">
+                        </div>
+                    </div>
+                    <div class="col-xs-2 text-left search-panel">
+                        <button class="btn btn-success btn-sm m-r-sm" ng-click="search()">确定</button>
+                        <button class="btn btn-default btn-sm" ng-click="clear()">清空</button>
+                    </div>
+                    <div class="hide-advance" ng-click="SearchControl.IsAdvance=false" title="收起搜索栏">
+                        <i class="ec ec-arrow-line"></i> 收起
+                    </div>
+                </div>
+                <table class="col-xs-12 table table-fixed m-t">
+                    <thead>
+                    <tr>
+                        <th width="35%">商户名称</th>
+                        <th width="15%">联系人</th>
+                        <th width="15%">联系人手机</th>
+                        <th width="35%">所属核心商户</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-if="businessList.length == 0">
+                        <td colspan="4" class="text-center">暂无商户信息，请新增商户</td>
+                    </tr>
+                    <tr ng-repeat="item in businessList track by $index">
+                        <td class="overflow-dots"><a title="查看详情" ng-click="showBusinessDetail($index)">{{item.DealerName}}</a>
+                        </td>
+                        <td>{{item.DealerContact}}</td>
+                        <td>{{item.DelaerContactTel}}</td>
+                        <td class="overflow-dots">{{item.CompanyName}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="col-xs-12 pagination-p">
+                    <div ec-page-info ng-model="pageInfo" ec-refresh="search()"></div>
+                </div>
+            </div>
+        </div>
+        <div tab heading="商户详情" active="activeFlag[1]" ng-if="activeFlag[1]">
+            <form name="editform" class="form-horizontal padder-v edit-page" novalidate>
+                <div class="form-group">
+                    <label class="control-label">商户名称：</label>
+                    <div class="text-message">{{business.DealerName}}</div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">联系人：</label>
+                    <div class="text-message">{{business.DealerContact}}</div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">联系人手机：</label>
+                    <div class="text-message">{{business.DelaerContactTel}}</div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">所属核心商户：</label>
+                    <div class="text-message">{{business.CompanyName}}</div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">核心商户联系人：</label>
+                    <div class="text-message">{{business.CompanyContact}}</div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">核心商户联系人手机：</label>
+                    <div class="text-message">{{business.CompanyContactTel}}</div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"></label>
+                    <button type="button" class="btn btn-md btn-success" ng-click="changeTab(0)">
+                        返回
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+
+<div ng-class="{'dropup':upPosition, 'dropDown':!upPosition}">
+    <div class="form-control dropdown-toggle" ng-click="toggleDropDown()">{{selectedObj.DepartmentName || '请选择'}}</div>
+    <div class="dropdown-content" ng-if="enablePopup">
+        <div class="header" >
+            选择部门
+            <span ng-repeat="obj in tabObj track by $index">
+                <span ng-if="$first">:</span>
+                <span ng-if="$index > 0">-></span>
+                {{obj.DepartmentName}}
+            </span>
+            <span class="popup-btn" ng-click="ok()">确定</span>
+            <span class="popup-btn" ng-click="cancel()">取消</span>
+        </div>
+        <div class="row">
+            <div tabset class="col-xs-12">
+                <div tab heading="{{tabObj[0].DepartmentName || '请选择'}}" active="activeFlag[0]">
+                    <div class="col-xs-12">
+                        <ul class="clearfix select-list">
+                            <li ng-repeat="item in firstClassList track by $index" ng-click="selectClassItem(1,$index)">
+                                {{item.DepartmentName}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div tab heading="{{tabObj[1].DepartmentName || '请选择'}}" active="activeFlag[1]" ng-show="secondClassList.length > 0">
+                    <div class="col-xs-12">
+                        <ul class="clearfix select-list">
+                            <li ng-repeat="item in secondClassList track by $index" ng-click="selectClassItem(2,$index)">
+                                {{item.DepartmentName}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div tab heading="{{tabObj[2].DepartmentName || '请选择'}}" active="activeFlag[2]" ng-show="thirdClassList.length > 0">
+                    <div class="col-xs-12">
+                        <ul class="clearfix select-list">
+                            <li ng-repeat="item in thirdClassList track by $index" ng-click="selectClassItem(3,$index)">
+                                {{item.DepartmentName}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

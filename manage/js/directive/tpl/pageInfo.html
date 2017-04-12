@@ -1,0 +1,24 @@
+<nav class="pull-right">
+    <span class="pull-left input-sm">第{{pageInfo.CurPage}}页/共{{pageInfo.TotalPages}}页&emsp;</span>
+    <form class="form-inline pull-left">
+        <select class="form-control input-sm" ng-model="pageInfo.PageSize"
+                ng-change="changePageSize()">
+            <option value="10">10/页</option>
+            <option value="20">20/页</option>
+            <option value="30">30/页</option>
+            <option value="40">40/页</option>
+            <option value="50">50/页</option>
+        </select>
+    </form>&emsp;
+    <pagination total-items="pageInfo.TotalRows"
+                items-per-page="pageInfo.PageSize"
+                previous-text="上一页"
+                next-text="下一页"
+                ng-model="pageInfo.CurPage"
+                max-size="5"
+                class="pagination-sm pull-right"
+                boundary-link-numbers="true"
+                rotate="false"
+                ng-change="pageChange()">
+    </pagination>
+</nav>

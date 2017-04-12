@@ -1,0 +1,82 @@
+﻿.advisory-detail {
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+    font-size: 13px;
+    line-height: 20px;
+    color: #333;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: left;
+    overflow-x: auto;
+    width: 918px;
+    margin: 0 auto;
+}
+.advisory-detail a {
+    color: #0782C1;
+}
+.advisory-detail p {
+    margin: 12px 0;
+}
+.advisory-detail h1,.advisory-detail h2,.advisory-detail h3,.advisory-detail h4,.advisory-detail h5,.advisory-detail h6 {
+    font-weight: normal;
+    line-height: 1.2;
+}
+.advisory-detail h1 {
+    font-size: 24px;
+    margin: 8px 0;
+}
+.advisory-detail h2 {
+    text-align: left;
+    font-size: 20px;
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+}
+.advisory-detail h3 {
+    font-size: 16px;
+    margin: 12px 0;
+}
+.advisory-detail h4 {
+    font-size: 13px;
+    margin: 18px 0;
+}
+.advisory-detail h5 {
+    font-size: 11px;
+    margin: 20px 0;
+}
+.advisory-detail h6 {
+    font-size: 9px;
+    margin: 30px 0;
+}
+.advisory-detail em {
+    font-style: italic;
+}
+.advisory-detail img.right {
+    border: 1px solid #ccc;
+    float: right;
+    margin-left: 15px;
+    padding: 5px;
+}
+.advisory-detail img.left {
+    border: 1px solid #ccc;
+    float: left;
+    margin-right: 15px;
+    padding: 5px;
+}
+.advisory-detail ol{
+    list-style-type: decimal;
+    margin: 12px 0;
+    padding-left: 40px;
+}
+.advisory-detail ol li{
+    list-style-type: decimal;
+}
+.advisory-detail ul{
+    list-style-type: decimal;
+    margin: 12px 0;
+    padding-left: 40px;
+}
+.advisory-detail ul li{
+    list-style-type: disc;
+}

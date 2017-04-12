@@ -1,0 +1,53 @@
+<div class="modal-body wrapper-lg padder-none">
+    <div class="row modal-prompt">
+        <div class="col-xs-12 text-center">
+            <i class="ec base-color"
+               ng-class="{'ec-times-circle':settings.Type == Type.Error,
+                   'ec-check-circle':settings.Type == Type.Success,
+                   'ec-warning':settings.Type == Type.Warn,
+                   'ec-info-circle':settings.Type == Type.Note,
+                   'ec-question-circle':settings.Type == Type.Ask}"></i>
+        </div>
+        <div class="col-xs-12 wrapper text-center" ng-if="!(settings.Content.Value | isArray)">
+            <div class="prompt-block">
+                <span ng-bind-html="settings.Content.Message" ng-if="settings.isHtml"></span>
+                <span ng-if="!settings.isHtml">
+                    {{settings.Content.Message}}
+                </span>
+                <br>
+                <span class="msg-no" ng-if="!!settings.Content.Code">
+                    编号：{{settings.Content.Code}}
+                </span>
+            </div>
+        </div>
+        <div class="col-xs-12 m-b-md" ng-if="settings.Content.Value | isArray">
+            <div class="wrapper text-center prompt-block">
+                {{settings.Content.Message}}啊实打实的阿萨德
+            </div>
+            <table class="table m-b-md msg-array">
+                <thead>
+                <tr>
+                    <th>项目</th>
+                    <th>错误信息</th>
+                    <th>错误编号</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="items in settings.Content.Value track by $index">
+                    <td>{{items.Value}}</td>
+                    <td>{{items.Message}}</td>
+                    <td>{{items.Code}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-12 m-t-xs text-center">
+            <button class="btn btn-success btn-modal" ng-click="ok()">
+                {{settings.OkName}}
+            </button>
+            <button ng-if="settings.Type == Type.Ask" class="btn btn-default btn-modal" ng-click="cancel()">
+                {{settings.NoName}}
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="modal-header">
+    图片设置
+</div>
+<div class="wrapper">
+    <div ng-form class="form-horizontal" name="editform" novalidate>
+        <div class="form-group">
+            <label class="control-label col-xs-2">图片标题:</label>
+
+            <div class="col-xs-6">
+                <input type="text" class="form-control" ng-model="data.Title" name="title" ng-maxlength="20">
+            </div>
+            <div class="col-xs-4">
+                <span class="help-block"
+                      ng-hide="editform.title.$dirty && editform.title.$error.maxlength"></span>
+                <span class="error-block error-danger"
+                      ng-show="editform.title.$dirty && editform.title.$error.maxlength">
+                    <i class="fa fa-times-circle"></i>已超出20字符
+                </span>
+            </div>
+        </div>
+        <div class="form-group" ng-if="!showMultiTarget">
+            <label class="control-label col-xs-2">跳转链接:</label>
+
+            <div class="col-xs-6">
+                <input type="text" class="form-control" ng-model="data.Link" name="Link"
+                       ec-url ec-focus ng-maxlength="256">
+            </div>
+            <div class="col-xs-4"
+                 ng-hide="editform.Link.$dirty && editform.Link.$invalid">
+                <span class="help-block">点击图片的跳转地址</span>
+            </div>
+            <div class="col-xs-4"
+                 ng-show="editform.Link.$dirty&& !editform.Link.focused">
+                <span class="error-block error-danger"
+                      ng-show="editform.Link.$error.url">
+                    <i class="fa fa-times-circle"></i>Url格式不正确
+                </span>
+                <span class="error-block error-danger"
+                      ng-show="editform.Link.$error.maxlength">
+                    <i class="fa fa-times-circle"></i>已超出256字符
+                </span>
+            </div>
+        </div>
+        <div ng-if="showMultiTarget">
+            <div ng-include="'view/mobile/linkType.html'" ></div>
+        </div>
+    </div>
+</div>
+
+<div class="picture modal-footer">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="error-block text-left">
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <button class="btn btn-primary" type="button" ng-click="ok(editform.$valid)">确认</button>
+            <button class="btn btn-default" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</div>

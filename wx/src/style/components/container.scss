@@ -1,0 +1,18 @@
+@import '~STYLE/mixin.scss';
+.container {
+  padding: 10px 0;
+  @include absoluteContainer();
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+.container.no-padding
+
+{
+  padding: 0;
+}
+.has-header{
+  top: 44px;
+}
+.container.has-header{
+  top: 44px;
+}

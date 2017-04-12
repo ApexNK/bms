@@ -1,0 +1,94 @@
+<div class="work-board clearfix m-t"  ng-if="!showNoticeDetail">
+    <div class="left main-block">
+        <div class="title-bar">
+            <div>账号信息</div>
+        </div>
+        <div class="item-block login-msg clearfix">
+            <div class="pull-left user-profile">
+                <i class="ec ec-user-circle"></i>
+            </div>
+            <ul class="pull-left">
+                <li>
+                    用户名称：{{personalInfo.LoginName}}
+                </li>
+                <li>
+                    <span>{{personalInfo.RoleName || personalInfo.UserName}}</span>
+                </li>
+                <li>
+                    <a ui-sref="app.inner.security">修改密码</a>
+                </li>
+            </ul>
+        </div>
+        <div class="m-t title-bar" ng-if="1==2">
+            <div>商户总览</div>
+        </div>
+        <div class="item-block merchant" ng-if="1==2">
+            <div class="chart" ec-bar-chart chart-theme="theme" chart-axis="merchantDate"></div>
+        </div>
+        <div class="m-t title-bar">
+            <div>快捷操作</div>
+        </div>
+        <div class="item-block short-cut">
+            <ul class="clearfix">
+                <li>
+                    <a ui-sref="app.business.add">
+                        <i class="ec ec-m-merchant m-base-color"></i>
+                        <p>新增商户</p>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="app.inner.staff({tab:2})">
+                        <i class="ec ec-m-staff m-danger-color"></i>
+                        <p>新增人员</p>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="app.info.companyNotice">
+                        <i class="ec ec-m-notice m-info-color"></i>
+                        <p>商户公告</p>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="app.info.operateNotice">
+                        <i class="ec ec-m-notice m-info-color"></i>
+                        <p>内部公告</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="right main-block">
+        <div class="title-bar">
+            <div>系统公告</div>
+        </div>
+        <div class="item-block notice">
+            <ul>
+                <li ng-if="noticeList.length == 0">
+                    暂无公告
+                </li>
+                <li class="clearfix" ng-repeat="item in noticeList | limitTo:'4' track by $index">
+                    <i class="ec ec-caret-right"></i><a class="m-l-sm" ng-click="showDetail($index)">{{item.Title}}</a>
+                    <span>{{item.UpdateDate | EcDate:'yyyy-MM-dd'}}</span>
+                </li>
+                <li class="show-more" ng-if="noticeList.length > 0">
+                    <a ui-sref="app.info.operateNotice">查看更多</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="m-t" ng-if="showNoticeDetail">
+    <div class="text-center"><h3>{{noticeDetail.Title}}</h3></div>
+    <div class="text-center">发布日期:{{noticeDetail.UpdateDate|EcDateTime}}</div>
+    <div class="m-b">
+        <div ng-bind-html="noticeDetail.Detail | EcTrustHtml"></div>
+    </div>
+    附件：
+    <div class="attachment" ng-repeat="item in AttachFiles track by $index">
+        <a class="btn btn-link padder-none" ec-download-file
+           download-url="downloadUrl+'?id='+item.FileId+'&name='+item.FileName">
+            {{item.FileName}}
+        </a>
+    </div>
+    <button class="btn btn-md btn-success m-t" type="button" ng-click="goBack()">返回</button>
+</div>

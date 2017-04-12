@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="app.manager">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <title>会员管理</title>
+
+    <link type="image/x-icon" href="" rel="shortcut icon">
+    <link href="lib/font-dolphin/css/font-dolphin.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="lib/switch/style/bootstrap3/angular-toggle-switch-bootstrap-3.css" rel="stylesheet">
+    <link href="lib/angular-toaster/toaster.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/color-picker/color-picker.min.css"/>
+    <!-- build:css assets/css/app.min.css -->
+    <link href="assets/css/common.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
+    <link href="assets/css/advisory.css" rel="stylesheet">
+    <link href="assets/css/preview.css" rel="stylesheet">
+    <!--<link href="assets/css/themeBasic.css" rel="stylesheet">-->
+    <!-- /build -->
+
+
+</head>
+
+<body ng-controller="AppCtrl">
+<div class="shade loading" ng-show="loadingTracker.active()">
+</div>
+<div ng-show="loadingTracker.active()" class="shade loading-message">
+    &nbsp;&emsp;正在加载数据，请稍后......&emsp;
+</div>
+<div toaster-container toaster-options="{'close-button': true}"></div>
+<div ui-view>
+</div>
+
+
+<!-- 对IE8不支持indexOf打补丁-->
+<script src="lib/compatible/IE8.js" type="text/javascript"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="lib/compatible/html5shiv.min.js"></script>
+<script src="lib/compatible/respond.min.js"></script>
+<![endif]-->
+
+<script src="lib/angular/angular.js" type="text/javascript"></script>
+<script src="lib/angular/angular-sanitize.min.js" type="text/javascript"></script>
+<script src="lib/angular/angular-filter.min.js" type="text/javascript"></script>
+<script src="lib/uploader/ng-file-upload-shim.min.js" type="text/javascript"></script>
+
+<!-- for no html5 browsers support -->
+<script src="lib/uploader/ng-file-upload.min.js"></script>
+<script src="lib/angular/angular-ui-router.min.js" type="text/javascript"></script>
+<script src="lib/bootstrap/ui-bootstrap-tpls.js" type="text/javascript"></script>
+<script src="lib/switch/angular-toggle-switch.min.js" type="text/javascript"></script>
+<script src="lib/angular-toaster/toaster.min.js" type="text/javascript"></script>
+
+<!--tracker-->
+<script src="lib/tracker/promise-tracker.js" type="text/javascript"></script>
+<script src="lib/tracker/promise-tracker-http-interceptor.js" type="text/javascript"></script>
+
+<!--build:js js/template.directive.js -->
+<script src="js/templatecache.js"></script>
+<!-- /build -->
+
+<!--build:js js/template.widget.js -->
+<!-- /build -->
+
+<!-- build:js js/app.data.js -->
+<script src="config/menu.js" type="text/javascript"></script>
+<!-- /build -->
+
+<!--build:js js/app.min.js -->
+<script src="js/service/retryQueue.js" type="text/javascript"></script>
+<script src="js/service/userContext.js" type="text/javascript"></script>
+<script src="js/service/infra.js" type="text/javascript"></script>
+<script src="js/service/all.js" type="text/javascript"></script>
+
+<script src="widget/widget.js" type="text/javascript"></script>
+<script src="js/controller/workboard/main.js" type="text/javascript"></script>
+<script src="js/controller/business/manage.js" type="text/javascript"></script>
+<script src="js/controller/business/main.js" type="text/javascript"></script>
+<script src="js/controller/userContext.js" type="text/javascript"></script>
+<script src="js/controller/all.js" type="text/javascript"></script>
+<script src="js/directive/all.js" type="text/javascript"></script>
+<script src="js/directive/validation.js" type="text/javascript"></script>
+<script src="js/filter/all.js" type="text/javascript"></script>
+<script src="js/app.js" type="text/javascript"></script>
+
+<!--/build -->
+<script src="config/config.js" type="text/javascript"></script>
+</body>
+</html>

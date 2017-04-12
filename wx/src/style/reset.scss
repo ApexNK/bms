@@ -1,0 +1,17 @@
+@import './var.scss';
+@font-face
+{
+	font-family: minion-pro;
+	src: url('/static/font/MinionPro.ttf') format('truetype')
+		 ,url('/static/font/MinionPro-Regular.otf') format('otf'); 
+}
+*{
+  margin:0;
+  padding: 0;
+}
+body {
+  font-size: $baseFontSize;
+  font-family: TimesNewRoman, "Times New Roman", Times, sans-serif;
+  // font-family: "minion-pro";
+  font-style: normal;
+}

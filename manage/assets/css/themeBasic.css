@@ -1,0 +1,147 @@
+body {
+    background: #f6f6f6
+}
+
+/* * * * * * 顶部 begin * * * * * */
+.menu-nav{
+    background-color: #ececec;
+
+}
+.menu-nav .header{
+    background: #ececec;
+}
+.menu-nav .logo{
+    background: #f00;
+}
+/* * * * * * 顶部 end * * * * * */
+
+/* * * * * * 导航 begin * * * * * */
+.main-nav{
+    color: #fff;
+    background: #0f0;
+}
+.side-nav{
+    background: #f00;
+}
+/* * * * * * 导航 end * * * * * */
+
+/* * * * * * 页签 & 面包屑 begin * * * * * */
+/* * * * * * 页签 & 面包屑 end * * * * * */
+
+/* * * * * * 搜索 begin * * * * * */
+/* * * * * * 搜索 end * * * * * */
+
+/* * * * * * 表格&分页 begin * * * * * */
+/* * * * * * 表格&分页 end * * * * * */
+
+
+/* * * * * * 按钮 begin * * * * * */
+.btn-default {
+    color: #f00;
+    background-color: #fff;
+    border-color: #f00;
+}
+
+.btn-default:focus,
+.btn-default.focus,
+.btn-default:hover,
+.btn-default:active,
+.btn-default.active {
+    color: #f0f;
+    background-color: #f6f6f6;
+    border-color: #f0f;
+}
+
+.btn-default:active:hover,
+.btn-default.active:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.btn-default:active.focus,
+.btn-default.active.focus {
+    color: #f0f;
+    background-color: #f6f6f6;
+    border-color: #f0f;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #fd8712;
+    border-color: #fd8712;
+}
+
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active {
+    color: #fff;
+    background-color: #d86b00;
+    border-color: #d86b00;
+}
+
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus {
+    color: #fff;
+    background-color: #d86b00;
+    border-color: #d86b00;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #40b99d;
+    border-color: #40b99d;
+}
+
+.btn-success:focus,
+.btn-success.focus,
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active {
+    color: #fff;
+    background-color: #07a17d;
+    border-color: #07a17d;
+}
+
+.btn-success:active:hover,
+.btn-success.active:hover,
+.btn-success:active:focus,
+.btn-success.active:focus,
+.btn-success:active.focus,
+.btn-success.active.focus {
+    color: #fff;
+    background-color: #07a17d;
+    border-color: #07a17d;
+}
+
+.btn-info {
+    color: #0daf89;
+    background-color: #f6f6f6;
+    border-color: #f6f6f6;
+}
+
+.btn-info:focus,
+.btn-info.focus,
+.btn-info:hover,
+.btn-info:active,
+.btn-info.active {
+    color: #ee3b2a;
+    background-color: #ececec;
+    border-color: #ececec;
+}
+
+.btn-info:active:hover,
+.btn-info.active:hover,
+.btn-info:active:focus,
+.btn-info.active:focus,
+.btn-info:active.focus,
+.btn-info.active.focus {
+    color: #ee3b2a;
+    background-color: #ececec;
+    border-color: #ececec;
+}
+/* * * * * * 按钮 end * * * * * */
+

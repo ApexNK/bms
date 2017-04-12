@@ -1,0 +1,12 @@
+<div ng-include="'view/blocks/menunav.html'" ng-if="app.settings.menuNav"></div>
+
+<div class="container">
+    <div class="side-nav" ng-show="app.settings.sideNav">
+        <div ng-include="'view/blocks/sidenav.html'"></div>
+    </div>
+
+    <div class="main-body" ng-class="{true:'show-sub',false:'hide-sub'}[app.settings.sideNav]">
+        <div ui-view></div>
+    </div>
+</div>
+

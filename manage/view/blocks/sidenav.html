@@ -1,0 +1,19 @@
+<ul class="side-menu" ng-controller="SideNavCtrl">
+    <li class="primary-menu">
+        <i class="{{currentPriMenu.Icon}}"></i>{{currentPriMenu.Name}}
+    </li>
+    <li ng-repeat="menu in MenuItems track by $index">
+        <a ng-click="isCollapsed = !isCollapsed">
+            <i ng-class="{true:'icon-slide-nav sub-nav-h',false:'icon-slide-nav sub-nav-s'}[isCollapsed]"></i>
+            {{menu.Name}}
+        </a>
+        <ul collapse="isCollapsed" class="menu-item">
+            <li ng-repeat="item in menu.Children">
+                <a ui-sref="{{item.State}}" ng-class="{active:state.includes('{{item.State}}')}">
+                    <i ng-class="{true:'icon-slide-nav thrid-nav-l',false:'icon-slide-nav thrid-nav'}[$last]"></i>
+                    {{item.Name}}
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,99 @@
+.row-wrap {
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+  }
+  %grid-col {
+    position: relative;
+    @include box-sizing();
+    &.type1st {
+      .col-container{
+        background: rgba(247, 232, 254, 0.35);
+        border:2px solid rgba(247, 232, 254, 0.95);
+        // color: #19ffff;
+      }
+    }
+    &.type2nd {
+      .col-container{
+        background: rgba(197, 255, 255, 0.35);
+        border:2px solid rgba(197, 255, 255, 0.95);
+        // color: #FF1977;
+      }
+    }
+    &.type3rd {
+      .col-container{
+        background: rgba(216, 255, 216, 0.35);
+        border:2px solid rgba(216, 255, 216, 0.95);
+      }
+    }
+    &.type4th {
+      .col-container{
+        border:2px solid rgba(191,216,255, 0.95);
+        background: rgba(191,216,255, 0.35);
+        // box-shadow: 0 0 2px rgba(193, 34, 255, 0.75) inset;
+        // color:#ff9912;
+      }
+    }
+    &.type5th {
+      .col-container{
+        border:2px solid rgba(255, 229, 196, 0.95);
+        background: rgba(255, 229, 196, 0.35);
+        // color: #DCA4BB;
+      }
+    }
+    &.chosen {
+      .col-container{
+        border:2px solid rgba(58,10,245, 1);
+        // color: #3A0AF5;
+      }
+    }
+    &.errchosen {
+      .col-container{
+        border:2px solid rgba(255,1,1,1);
+        // color: #ff0101;
+      }
+    }
+    .col-container{
+      display: -webkit-flex;
+      display: flex;
+      position: absolute;
+      left:1px;
+      right:1px;
+      top:1px;
+      bottom:1px;
+      text-align: center;
+      background: rgba(191,216,255, 0.35);
+      border:2px solid rgba(191,216,255, 0.95);
+      // color: #DCA4BB;
+      color: #0e0e0e;
+      word-wrap: break-word;
+      word-break: break-all;
+      vertical-align: middle;
+      align-items: center;
+      span {
+        width: 100%;
+        text-align: center;
+        display: inline-block;
+        line-height: 20px;
+        font-size: 10px;
+      }
+      // line-height: 5rem;
+    }
+  }
+  .col-33-rem {
+    @extend %grid-col;
+    -moz-flex: 0 0 5.333333rem;
+    -ms-flex: 0 0 5.333333rem;
+    flex: 0 0 5.333333rem;
+    max-width: 5.333333rem * 0.618;
+    height: 5.333333rem;
+    padding: 1px;
+  }
+  .col-25-rem {
+    @extend %grid-col;
+    -moz-flex: 0 0 4rem;
+    -ms-flex: 0 0 4rem;
+    flex: 0 0 4rem;
+    max-width: 4rem;
+    height: 4rem * 0.618;
+    padding: 1px;
+  }

@@ -1,0 +1,66 @@
+@import './reset.scss';
+@import './mixin.scss';
+@import './var.scss';
+// @import './components/index.scss';
+.ofh{
+  overflow: hidden
+}
+.fl {
+  float: left
+}
+.fr{
+  float: right;
+}
+.blk{
+  display: block;
+}
+.circle{
+  border-radius: 50%;
+}
+.padding{
+  padding: $basePadding
+}
+.text-right{
+  text-align: right;
+}
+.text-center{
+  text-align: center;
+}
+.cf{
+  clear: both;
+}
+.margin-top-far{
+  margin-top: $farMargin;
+}
+.margin-bottom-far{
+  margin-bottom: $farMargin;
+}
+.margin-bottom-close{
+  margin-bottom: $closeMargin;
+}
+.title {
+  font-size: 24px;
+  line-height: 44px;
+  font-weight: bold;
+}
+.base-color {
+  color: #56b8f7;
+}
+.model-btn {
+  width: 80px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+
+.card {
+  @extend .blk;
+  @extend .padding;
+  @extend .ofh;
+  @include setShadow();
+  @include box-sizing;
+  font-size: $baseFontSize;
+}
+

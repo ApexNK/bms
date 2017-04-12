@@ -1,0 +1,5 @@
+<i ng-click="toggleIcon($event)" class="check-box-item" ng-switch="ecChecked">
+    <i ng-switch-when="notall" class="ec ec-minus-square-o checked" ng-class="{'disabled':ecDisabled}"></i>
+    <i ng-switch-when="true" class="ec ec-check-square checked" ng-class="{'disabled':ecDisabled}"></i>
+    <i ng-switch-when="false" class="ec ec-square-o" ng-class="{'disabled':ecDisabled}"></i>
+</i>

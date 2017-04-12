@@ -1,0 +1,208 @@
+<div class="row content-title">
+    <div ec-path-info></div>
+</div>
+<div class="row wrapper bg-color container-border">
+    <div tabset type="tab-bar">
+        <div tab heading="模板列表" active="activeFlag[0]" ng-click="changeTab(0)">
+            <div class="padder-v clearfix">
+                <div class="col-xs-12 no-padder">
+                    <button class="btn btn-sm btn-primary" ng-click="addTab()"><i class="ec ec-plus"></i> 新增
+                    </button>
+                </div>
+                <table class="col-xs-12 table m-t">
+                    <thead>
+                    <tr>
+                        <th width="50%">权限模板名称</th>
+                        <th width="20%">模板类型</th>
+                        <th width="30%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-if="scepters.length == 0">
+                        <td colspan="3" class="text-center">暂时没有权限模板数据</td>
+                    </tr>
+                    <tr ng-repeat="scepter in scepters track by $index">
+                        <td>{{scepter.TemplateName}}</td>
+                        <td>{{scepter.Lx=="2"?"系统默认":"自定义"}}</td>
+                        <td>
+                            <button class="btn btn-operate" ng-if="scepter.Lx!='2'" ng-click="remove($index)">删除
+                            </button>
+                            <button class="btn btn-operate" ng-if="scepter.Lx!='2'" ng-click="editTab($index)">编辑
+                            </button>
+                            <button class="btn btn-operate" ng-if="scepter.Lx!='2'"
+                                    ng-click="editSce($index,'edit')">设置权限
+                            </button>
+                            <button class="btn btn-operate" ng-if="scepter.Lx=='2'"
+                                    ng-click="editSce($index,'read')">查看权限
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="col-xs-12 pagination-p text-right">
+                    共 {{scepters.length}} 项
+                </div>
+            </div>
+        </div>
+        <div tab heading="设置权限" active="activeFlag[1]" ng-if="activeFlag[1]">
+            <div class="padder-v clearfix">
+                <div class="col-xs-12 m-b">
+                    模板名称：{{Template.Name}}<i class="m-r-lg"></i>模板说明：{{Template.Remark}}
+                </div>
+                <div class="col-xs-12 group no-padder">
+                    <div class="group-head">
+                        <div ec-check-box ec-checked="root.Value" ec-click="selectAll(root.Value)" ec-disabled="cannotEdit"></div>
+                        <span class="m-l-sm">全选</span>
+                    </div>
+                    <div class="group-item" ng-repeat="p in myScepter">
+                        <div class="group-item-head" ng-click="open=!open">
+                            <div ec-check-box ec-checked="p.value" ec-click="changeState(p)" ec-disabled="cannotEdit"></div>
+                            <a ng-click="changeState(p)" class="m-l-sm">{{p.text}}</a>
+                        <span>
+                            <span ng-show="!open" class="base-color">展开 <i class="ec ec-chevron-down"></i></span>
+                            <span ng-show="open" class="base-color">收起 <i class="ec ec-chevron-up"></i></span>
+                        </span>
+                        </div>
+                        <div class="group-item-body" ng-show="open">
+                            <div class="group-item" ng-repeat="c in p.children">
+                                <div class="group-item-head" ng-show="p.children.length!=1">
+                                    <div ec-check-box ec-checked="c.value" ec-click="changeState(c)" ec-disabled="cannotEdit"></div>
+                                    <a ng-click="changeState(c)" class="m-l-sm">{{c.text}}</a>
+                                </div>
+                                <div class="group-item-body clearfix">
+                                    <div class="col-xs-3" ng-repeat="item in c.children">
+                                        <div ec-check-box ec-checked="item.value" ec-click="changeState(item)"  ec-disabled="cannotEdit"></div>
+                                        <a ng-click="changeState(item)" class="m-l-sm">{{item.text}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-foot">
+                        <div ec-check-box ec-checked="root.Value" ec-click="selectAll(root.Value)" ec-disabled="cannotEdit"></div>
+                        <span class="m-l-sm">全选</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 m-b text-center">
+                    <button class="btn btn-md btn-success m-r-sm" ng-if="!cannotEdit" ng-click="authoritySave()">
+                        保存
+                    </button>
+                    <button type="button" class="btn btn-md btn-default" ng-click="changeTab(0)">
+                        返回
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div tab heading="新增模版" active="activeFlag[2]" ng-if="activeFlag[2]">
+            <form role="form" name="templateForm" class="form-horizontal m-t padder-v edit-page" novalidate>
+                <div class="form-group">
+                    <label class="control-label"><i>*</i> 模板名称：</label>
+
+                    <input type="text" name="Name" class="form-control" ng-model="template.TemplateName"
+                           required ec-focus ng-maxlength="50"/>
+
+                    <div class="msg-block"
+                         ng-show="templateForm.Name.$dirty && templateForm.Name.$valid && !templateForm.Name.focused">
+                        <div class="success-msg">
+                            <i class="ec ec-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="msg-block"
+                         ng-show="templateForm.Name.$dirty||(templateForm.Name.$invalid&&submitted)">
+                        <div class="error-msg"
+                             ng-show="templateForm.Name.$error.required&& !templateForm.Name.focused">
+                            <i class="ec ec-times-circle"></i>必填项，请填写
+                        </div>
+                        <div class="error-msg"
+                             ng-show="templateForm.Name.$error.maxlength&& !templateForm.Name.focused">
+                            <i class="ec ec-times-circle"></i>已超过最长50字符
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"> 模板说明：</label>
+
+                    <textarea type="text" name="Remark" class="form-control" ng-model="template.Remark"
+                          ec-focus ng-maxlength="64"></textarea>
+
+                    <div class="msg-block"
+                         ng-show="templateForm.Remark.$dirty && templateForm.Remark.$valid && !templateForm.Remark.focused">
+                        <div class="success-msg">
+                            <i class="ec ec-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="msg-block"
+                         ng-show="templateForm.Remark.$dirty||(templateForm.Remark.$invalid&&submitted)">
+                        <div class="error-msg"
+                             ng-show="templateForm.Remark.$error.maxlength&& !templateForm.Remark.focused">
+                            <i class="ec ec-times-circle"></i>已超过最长64字符
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"></label>
+                        <button type="submit" class="btn btn-ebiz btn-success m-r-sm"
+                                ng-click="saveInfo(templateForm.$valid)">
+                            确定
+                        </button>
+                        <button type="button" class="btn btn-ebiz btn-default" ng-click="cancel()"> 取消
+                        </button>
+                    </div>
+            </form>
+        </div>
+        <div tab heading="编辑模版" active="activeFlag[3]" ng-if="activeFlag[3]">
+            <form role="form" name="templateForm" class="form-horizontal m-t padder-v edit-page" novalidate>
+                <div class="form-group">
+                    <label class="control-label"><i>*</i> 模板名称：</label>
+                    <input type="text" name="Name" class="form-control" ng-model="template.TemplateName"
+                           required ec-focus ng-maxlength="50"/>
+                    <div class="msg-block"
+                         ng-show="templateForm.Name.$dirty && templateForm.Name.$valid && !templateForm.Name.focused">
+                        <div class="success-msg">
+                            <i class="ec ec-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="msg-block"
+                         ng-show="templateForm.Name.$dirty||(templateForm.Name.$invalid&&submitted)">
+                        <div class="error-msg"
+                             ng-show="templateForm.Name.$error.required&& !templateForm.Name.focused">
+                            <i class="ec ec-times-circle"></i>必填项，请填写
+                        </div>
+                        <div class="error-msg"
+                             ng-show="templateForm.Name.$error.maxlength&& !templateForm.Name.focused">
+                            <i class="ec ec-times-circle"></i>已超过最长50字符
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"> 模板说明：</label>
+
+                    <textarea type="text" name="Remark" class="form-control" ng-model="template.Remark"
+                          ec-focus ng-maxlength="64" style="max-width: 100%;"></textarea>
+                    <div class="msg-block"
+                         ng-show="templateForm.Remark.$dirty && templateForm.Remark.$valid && !templateForm.Remark.focused">
+                        <div class="success-msg">
+                            <i class="ec ec-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="msg-block"
+                         ng-show="templateForm.Remark.$dirty||(templateForm.Remark.$invalid&&submitted)">
+                        <div class="error-msg"
+                             ng-show="templateForm.Remark.$error.maxlength&& !templateForm.Remark.focused">
+                            <i class="ec ec-times-circle"></i>已超过最长64字符
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label"></label>
+                    <button type="submit" class="btn btn-ebiz btn-success m-r-sm"
+                            ng-click="saveInfo(templateForm.$valid)">
+                        确定
+                    </button>
+                    <button type="button" class="btn btn-ebiz btn-default" ng-click="cancel()"> 取消
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

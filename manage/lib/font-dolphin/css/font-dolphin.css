@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontDolphin.eot?78489324');
+  src: url('../fonts/fontDolphin.eot?78489324#iefix') format('embedded-opentype'),
+       url('../fonts/fontDolphin.woff2?78489324') format('woff2'),
+       url('../fonts/fontDolphin.woff?78489324') format('woff'),
+       url('../fonts/fontDolphin.ttf?78489324') format('truetype'),
+       url('../fonts/fontDolphin.svg?78489324#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ec {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  /*width: 1em;*/
+  /*margin-right: .2em;*/
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  /*line-height: 1em;*/
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  /*margin-left: .2em;*/
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ec-chevron-up:before { content: '\e800'; }
+.ec-cog:before { content: '\e801'; }
+.ec-clip:before { content: '\e802'; }
+.ec-exit:before { content: '\e803'; }
+.ec-folder-close:before { content: '\e804'; }
+.ec-circle-c:before { content: '\e805'; }
+.ec-clock-o:before { content: '\e806'; }
+.ec-home:before { content: '\e807'; }
+.ec-goods:before { content: '\e808'; }
+.ec-download:before { content: '\e809'; }
+.ec-internal:before { content: '\e80a'; }
+.ec-list:before { content: '\e80b'; }
+.ec-folder-open:before { content: '\e80c'; }
+.ec-circle:before { content: '\e80d'; }
+.ec-m-cart:before { content: '\e80e'; }
+.ec-m-depot:before { content: '\e80f'; }
+.ec-lock:before { content: '\e810'; }
+.ec-m-goods:before { content: '\e811'; }
+.ec-minus-square-o:before { content: '\e812'; }
+.ec-info-circle:before { content: '\e813'; }
+.ec-m-merchant:before { content: '\e814'; }
+.ec-m-staff:before { content: '\e815'; }
+.ec-merchants:before { content: '\e816'; }
+.ec-pencil:before { content: '\e817'; }
+.ec-plus:before { content: '\e818'; }
+.ec-m-notice:before { content: '\e819'; }
+.ec-print:before { content: '\e81a'; }
+.ec-map:before { content: '\e81b'; }
+.ec-info:before { content: '\e81c'; }
+.ec-pic:before { content: '\e81d'; }
+.ec-purchase:before { content: '\e81e'; }
+.ec-search-list:before { content: '\e81f'; }
+.ec-set-a:before { content: '\e820'; }
+.ec-space:before { content: '\e821'; }
+.ec-question-circle:before { content: '\e822'; }
+.ec-export:before { content: '\e823'; }
+.ec-times:before { content: '\e824'; }
+.ec-sale:before { content: '\e825'; }
+.ec-upload:before { content: '\e826'; }
+.ec-set-b:before { content: '\e827'; }
+.ec-refresh:before { content: '\e828'; }
+.ec-square-o:before { content: '\e829'; }
+.ec-stock:before { content: '\e82a'; }
+.ec-user:before { content: '\e82b'; }
+.ec-user-circle:before { content: '\e82c'; }
+.ec-arrow-line:before { content: '\e82d'; }
+.ec-arrow-left:before { content: '\e82e'; }
+.ec-bind-phone:before { content: '\e82f'; }
+.ec-arrow-right:before { content: '\e830'; }
+.ec-calendar:before { content: '\e831'; }
+.ec-caret-up:before { content: '\e832'; }
+.ec-times-circle:before { content: '\e833'; }
+.ec-chart:before { content: '\e834'; }
+.ec-check:before { content: '\e835'; }
+.ec-check-circle:before { content: '\e836'; }
+.ec-chevron-down:before { content: '\e837'; }
+.ec-check-square:before { content: '\e838'; }
+.ec-warning:before { content: '\e839'; }
+.ec-chevron-right:before { content: '\e83a'; }
+.ec-chevron-left:before { content: '\e83b'; }
+.ec-import:before { content: '\e83c'; }
+.ec-folder-o:before { content: '\e83d'; }
+.ec-angle-double-left:before { content: '\e83e'; }
+.ec-caret-right:before { content: '\e83f'; }
+.ec-angle-double-right:before { content: '\e840'; }
+.ec-favorite:before { content: '\e98c'; }

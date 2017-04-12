@@ -1,0 +1,6 @@
+<div>
+    <select class="form-control" ng-model="selIndustry[type[level-1]]" ng-disabled="classList.length==1"
+            ng-options="class.Id as class.SortName for class in classList" ng-change="refreshModel()"
+            style="width: 120px;margin-right:10px;">
+    </select>
+</div>

@@ -1,0 +1,48 @@
+<div class="menu-nav clearfix">
+    <div class="header clearfix">
+        <div class="short-link pull-left">
+            <ul>
+                <li>
+                    <a ui-sref="app.workboard.main">
+                        <i class="ec ec-home"></i>
+                        首页
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="pull-right worker" ng-controller="TopBarCtrl">
+            <ul class="clearfix">
+                <li class="user-info pull-left m-r-lg">
+                    <a>
+                        <i class="ec ec-user base-color"></i>{{LoginUser.UserName}}
+                    </a>
+                    <div class="worker-info">
+                        <i class="ec ec-caret-up"></i>
+                        <ul>
+                            <li><a ui-sref="app.inner.personal">个人信息</a></li>
+                            <li><a ui-sref="app.inner.security">修改密码</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="pull-left m-r-lg">
+                    <a ng-click="logout()">
+                        <i class="ec ec-exit"></i>退出
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-nav">
+        <div class="logo">
+            <img src="assets/img/logo.png">
+        </div>
+        <ul class="nav" ng-controller="MenuCtrl">
+            <li ng-repeat="item in Menus">
+                <a ng-class="{active:state.includes('{{item.State}}')}" ui-sref="{{item.State + '.main'}}">
+                    <i class="{{item.Icon}}"></i><br>
+                    {{item.Name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
