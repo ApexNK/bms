@@ -1664,6 +1664,7 @@ table input[type="checkbox"] {
     width: 100%;
     background: #fff url(../../assets/img/login_msg_bg.png) right no-repeat;
     padding: 30px 0 40px;
+    height: 220px;
 }
 
 .work-board .user-profile {

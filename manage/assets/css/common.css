@@ -589,6 +589,16 @@ a:hover, a:visited, a:hover {
     background: #4b4f74;
     z-index: 10;
 }
+.main-nav .log-icon {
+    min-width: 110px;
+    text-align: center;
+    margin-top: 10px;
+}
+.main-nav .log-icon  i {
+    font-size: 60px;
+    color: #ff8e20;
+    line-height: 1em;
+}
 
 .main-nav .nav li {
     min-width: 110px;
