@@ -71,11 +71,7 @@
 
         function _Post(url, formData) {
             var deferred = $q.defer();
-            var needTracker = true;
-            if(url === "HumanBehavior/UpdateMenuCounter"||'Public/AreaList'){
-                needTracker = false;
-            }
-            var resp = $http.post(_GetRequestUrl(url), formData,  needTracker?{tracker: $rootScope.loadingTracker}:{});
+            var resp = $http.post(_GetRequestUrl(url), formData);
             resp.then(function (data, status, headers, config) {
                     /*todo:*/
                     deferred.resolve(data.data);
@@ -89,8 +85,7 @@
         function _Get(url, param) {
             var deferred = $q.defer();
             var resp = $http.get(_GetRequestUrl(url), {
-                params: param,
-                tracker: $rootScope.loadingTracker
+                params: param
             }).then(function (data, status, headers, config) {
                     deferred.resolve(data.data);
                 },

@@ -1953,3 +1953,14 @@ table input[type="checkbox"] {
     border-color: #292476;
 }
 
+.main-nav .user-profile {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+}
+
+.main-nav .user-profile i {
+    font-size: 60px;
+    color: #ff8e20;
+    line-height: 1em;
+}

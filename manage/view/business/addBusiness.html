@@ -1,236 +1,70 @@
-<div class="row content-title">
-    <div ec-path-info></div>
-</div>
 <div class="row wrapper bg-color">
     <form name="businessForm" class="form-horizontal padder-v edit-page" novalidate>
         <div class="form-group">
-            <label class="control-label"><i>*</i>商户名称：</label>
-            <input type="text" class="form-control" name="CompanyName" ng-model="business.CompanyName"
-                   maxlength="20" ng-pattern="/^[0-9a-zA-Z\u4e00-\u9fa5]{1,20}$/" ec-focus
-                   required>
-
-            <div class="msg-block"
-                 ng-show="businessForm.CompanyName.$dirty && businessForm.CompanyName.$valid && !businessForm.CompanyName.focused">
-                <span class="success-msg">
-                    <i class="ec ec-check-circle"></i>
-                </span>
-            </div>
-            <div class="msg-block"
-                 ng-show="businessForm.CompanyName.$dirty || (businessForm.CompanyName.$invalid && submitted)">
-                <span class="error-msg"
-                      ng-show="businessForm.CompanyName.$error.required && !businessForm.CompanyName.focused">
-                    <i class="ec ec-times-circle"></i>必填项，请填写
-                </span>
-
-                <div class="error-msg"
-                     ng-show="businessForm.CompanyName.$error.pattern&&!businessForm.CompanyName.focused">
-                    <i class="ec ec-times-circle"></i>仅允许输入中文、英文、数字
-                </div>
-            </div>
+            <label class="control-label"><i>*</i>会员姓名：</label>
+            <input type="text" class="form-control" name="memberName" ng-model="member.name"
+                   maxlength="20" ec-focus required>
         </div>
         <div class="form-group">
-            <label class="control-label">统一社会信用代码：</label>
-            <input type="text" class="form-control" name="UnifiedSocialCreditcode" ec-focus ng-pattern="/^[A-Za-z0-9]{18}$/"
-                   ng-model="business.UnifiedSocialCreditcode">
-
-            <div class="msg-block"
-                 ng-show="businessForm.UnifiedSocialCreditcode.$dirty && businessForm.UnifiedSocialCreditcode.$valid && !businessForm.UnifiedSocialCreditcode.focused">
-                <span class="success-msg">
-                    <i class="ec ec-check-circle"></i>
-                </span>
-            </div>
-            <div class="msg-block"
-                 ng-show="businessForm.UnifiedSocialCreditcode.$dirty || (businessForm.UnifiedSocialCreditcode.$invalid && submitted)">
-                <span class="error-msg"
-                      ng-show="businessForm.UnifiedSocialCreditcode.$error.pattern && !businessForm.UnifiedSocialCreditcode.focused">
-                    <i class="ec ec-times-circle"></i>只允许输入18位的数字和字母
-                </span>
-            </div>
+            <label class="control-label"><i>*</i>类型：</label>
+            <select class="form-control" name="memberType" ng-model="member.type"
+                    ng-options="item.id as item.name for item in memberTypes"></select>
         </div>
         <div class="form-group">
-            <label class="control-label">法人姓名：</label>
-            <input type="text" class="form-control" name="LegalName" ng-model="business.LegalName">
+            <label class="control-label"><i>*</i>买入数量：</label>
+            <input type="text" class="form-control" name="amount" ng-model="member.purchaseAmount">
         </div>
         <div class="form-group">
-            <label class="control-label">身份证号：</label>
-            <input type="text" class="form-control" name="IDCardNo" ng-model="business.IDCardNo" ec-id-no ec-focus>
-
-            <div class="msg-block"
-                 ng-show="businessForm.IDCardNo.$dirty && businessForm.IDCardNo.$valid && !businessForm.IDCardNo.focused">
-                <span class="success-msg">
-                    <i class="ec ec-check-circle"></i>
-                </span>
-            </div>
-            <div class="msg-block"
-                 ng-show="businessForm.IDCardNo.$dirty || (businessForm.IDCardNo.$invalid && submitted)">
-                <span class="error-msg"
-                      ng-show="businessForm.IDCardNo.$error.idNo && !businessForm.IDCardNo.focused">
-                    <i class="ec ec-times-circle"></i>身份证错误
-                </span>
-            </div>
+            <label class="control-label"><i>*</i>购买成本：</label>
+            <input type="text" class="form-control" name="cost" ng-model="member.cost">
         </div>
         <div class="form-group">
-            <label class="control-label"><i>*</i>联系人：</label>
-            <input type="text" class="form-control" name="LinkMan1" ng-model="business.LinkMan1" ec-focus required>
-
-            <div class="msg-block"
-                 ng-show="businessForm.LinkMan1.$dirty && businessForm.LinkMan1.$valid && !businessForm.LinkMan1.focused">
-                <span class="success-msg">
-                    <i class="ec ec-check-circle"></i>
-                </span>
-            </div>
-            <div class="msg-block"
-                 ng-show="businessForm.LinkMan1.$dirty || (businessForm.LinkMan1.$invalid && submitted)">
-                <span class="error-msg"
-                      ng-show="businessForm.LinkMan1.$error.required && !businessForm.LinkMan1.focused">
-                    <i class="ec ec-times-circle"></i>必填项，请填写
-                </span>
-            </div>
+            <label class="control-label"><i>*</i>买入日期：</label>
+            <input type="text" class="form-control no-background-color" placeholder="请选择"
+                   ng-click="pDateCtrl.IsDateStart = true;pDateCtrl.IsDateEnd=false" datepicker-options="{closeTimer:true}"
+                   datepicker-popup="{{'yyyy-MM-dd'}}" ng-model="member.purchaseDate"
+                   is-open="pDateCtrl.IsDateStart" close-text="关闭" >
         </div>
         <div class="form-group">
-            <label class="control-label"><i>*</i>手机：</label>
-            <input type="text" class="form-control" name="LinkManTel1" ng-model="business.LinkManTel1" ec-focus required
-                   ec-phone>
-
-            <div class="msg-block"
-                 ng-show="businessForm.LinkManTel1.$dirty && businessForm.LinkManTel1.$valid && !businessForm.LinkManTel1.focused">
-                <span class="success-msg">
-                    <i class="ec ec-check-circle"></i>
-                </span>
-            </div>
-            <div class="msg-block"
-                 ng-show="businessForm.LinkManTel1.$dirty || (businessForm.LinkManTel1.$invalid && submitted)">
-                <span class="error-msg"
-                      ng-show="businessForm.LinkManTel1.$error.required && !businessForm.LinkManTel1.focused">
-                    <i class="ec ec-times-circle"></i>必填项，请填写
-                </span>
-                <span class="error-msg"
-                      ng-show="businessForm.LinkManTel1.$error.phone && !businessForm.LinkManTel1.focused">
-                    <i class="ec ec-times-circle"></i>手机号错误
-                </span>
-            </div>
+            <label class="control-label"><i>*</i>最新价格：</label>
+            <input type="text" class="form-control" name="lastestPrice" ng-model="member.lastestPrice">
         </div>
         <div class="form-group">
-            <label class="control-label">固定电话：</label>
-            <input type="text" class="form-control" name="CompanyTel" ng-model="business.CompanyTel" ec-tel ec-focus>
-
-            <div class="msg-block"
-                 ng-show="businessForm.CompanyTel.$dirty && businessForm.CompanyTel.$valid && !businessForm.CompanyTel.focused">
-                <span class="success-msg">
-                    <i class="ec ec-check-circle"></i>
-                </span>
-            </div>
-            <div class="msg-block"
-                 ng-show="businessForm.CompanyTel.$dirty || (businessForm.CompanyTel.$invalid && submitted)">
-                <span class="error-msg"
-                      ng-show="businessForm.CompanyTel.$error.tel && !businessForm.CompanyTel.focused">
-                    <i class="ec ec-times-circle"></i>固话号码错误
-                </span>
-            </div>
+            <label class="control-label">转让日期：</label>
+            <input type="text" class="form-control" name="transferDate" ng-model="member.transferDate">
         </div>
         <div class="form-group">
-            <label class="control-label">邮编：</label>
-            <input type="text" class="form-control" name="Zip" ng-model="business.Zip" ec-pattern ec-focus
-                   pattern="^[1-9][0-9]{5}$">
-
-            <div class="msg-block"
-                 ng-show="businessForm.Zip.$dirty && businessForm.Zip.$valid && !businessForm.Zip.focused">
-                <span class="success-msg">
-                    <i class="ec ec-check-circle"></i>
-                </span>
-            </div>
-            <div class="msg-block"
-                 ng-show="businessForm.Zip.$dirty || (businessForm.Zip.$invalid && submitted)">
-                <span class="error-msg"
-                      ng-show="businessForm.Zip.$error.patternError && !businessForm.Zip.focused">
-                    <i class="ec ec-times-circle"></i>邮编错误
-                </span>
-            </div>
+            <label class="control-label"><i>*</i>回购日期：</label>
+            <input type="text" class="form-control no-background-color" placeholder="请选择"
+                   ng-click="rDateCtrl.IsDateStart = true;rDateCtrl.IsDateEnd=false" datepicker-options="{closeTimer:true}"
+                   datepicker-popup="{{'yyyy-MM-dd'}}" ng-model="member.buyBackDate"
+                   is-open="rDateCtrl.IsDateStart" close-text="关闭" >
         </div>
         <div class="form-group">
-            <label class="control-label"><i>*</i>商户地址：</label>
-
-            <div ec-area-selector ng-model="selectedAddress"></div>
-            <div class="msg-block" ng-show="submitted&&(!business.CompanyAreaName)">
-                <span class="error-msg">
-                    <i class="ec ec-times-circle"></i>请填写完整
-                </span>
-            </div>
+            <label class="control-label"><i>*</i>最低回购价：</label>
+            <input type="text" class="form-control" name="buyBackPrice" ng-model="member.buyBackPrice">
+        </div>
+        <div class="form-group">
+            <label class="control-label"><i>*</i>年收益率：</label>
+            <input type="text" class="form-control" name="annualYield" ng-model="member.annualYield">
+        </div>
+        <div class="form-group">
+            <label class="control-label">积分：</label>
+            <input type="text" class="form-control" name="point" ng-model="member.point">
+        </div>
+        <div class="form-group">
+            <label class="control-label">业绩奖励：</label>
+            <input type="text" class="form-control" name="award" ng-model="member.award">
+        </div>
+        <div class="form-group">
+            <label class="control-label">盈亏提现：</label>
+            <input type="text" class="form-control" name="withdraw" ng-model="member.withdraw">
         </div>
         <div class="form-group">
             <label class="control-label"></label>
-            <input type="text" class="form-control" name="Address" ng-model="business.Address" placeholder="详细地址"
-                   required ec-focus>
-
-            <div class="msg-block"
-                 ng-show="businessForm.Address.$dirty && businessForm.Address.$valid && !businessForm.Address.focused">
-                <span class="success-msg">
-                    <i class="ec ec-check-circle"></i>
-                </span>
-            </div>
-            <div class="msg-block"
-                 ng-show="businessForm.Address.$dirty || (businessForm.Address.$invalid && submitted)">
-                <span class="error-msg"
-                      ng-show="businessForm.Address.$error.required && !businessForm.Address.focused">
-                    <i class="ec ec-times-circle"></i>必填项，请填写
-                </span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label">所属行业：</label>
-
-            <div ec-industry-selector ng-model="selIndustry" sel-level="1"></div>
-            <div ec-industry-selector ng-model="selIndustry" sel-level="2"></div>
-            <div ec-industry-selector ng-model="selIndustry" sel-level="3"></div>
-        </div>
-        <div class="form-group">
-            <label class="control-label">经营类型：</label>
-            <select class="form-control" name="BusinessModel" ng-model="business.BusinessModel"
-                    ng-options="item.Id as item.Name for item in operationTypes"></select>
-        </div>
-        <div class="form-group">
-            <label class="control-label">经营规模：</label>
-            <input type="text" name="CompanyScale" class="form-control" ng-model="business.CompanyScale" maxlength="12"
-                   ec-number-input disable-decimal="false" maxlength="14" decimal-places="2" ec-focus
-                   style="padding-right: 40px;"/>
-            <label class="text-message"
-                   style="width: 50px;position:absolute;margin-left: -40px;margin-top: 2px;">万元</label>
-        </div>
-        <div class="form-group">
-            <label class="control-label"><i>*</i>权限模板：</label>
-            <input type="text" name="MoudleTemplate" class="form-control bg-color"
-                   ng-model="business.ModuleTempletName" ng-click="setScepter(business.ModuleTempletId)" ec-focus required/>
-
-            <div class="msg-block"
-                 ng-show="businessForm.MoudleTemplate.$dirty && businessForm.MoudleTemplate.$valid && !businessForm.MoudleTemplate.focused">
-                <span class="success-msg">
-                    <i class="ec ec-check-circle"></i>
-                </span>
-            </div>
-            <div class="msg-block"
-                 ng-show="businessForm.MoudleTemplate.$dirty || (businessForm.MoudleTemplate.$invalid && submitted)">
-                <span class="error-msg"
-                      ng-show="businessForm.MoudleTemplate.$error.required && !businessForm.MoudleTemplate.focused">
-                    <i class="ec ec-times-circle"></i>必填项，请填写
-                </span>
-            </div>
-        </div>
-        <div class="form-group" ng-if="isAudit">
-            <label class="control-label">营业执照：</label>
-
-            <div class="col-xs-2 thumbnail m-b-none">
-                <img ng-src="{{business.BusinessLicenceUrl|ImgUrl}}" alt="...">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label"></label>
-            <button type="button" class="btn btn-md btn-success m-r-sm" ng-if="!isAudit"
-                    ng-click="addBusiness(businessForm.$valid)">提交
+            <button type="button" class="btn btn-md btn-success m-r-sm"
+                    ng-click="addMember(businessForm.$valid)">提交
             </button>
-            <button type="button" class="btn btn-md btn-success m-r-sm" ng-if="isAudit"
-                    ng-click="audit(businessForm.$valid)">通过
-            </button>
-            <button type="button" class="btn btn-md btn-default" ng-if="showCancel" ng-click="cancel()">取消</button>
         </div>
     </form>
 

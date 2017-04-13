@@ -1428,8 +1428,8 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
         showButtonBar: true
     })
 
-    .directive('datepickerPopup', ['$compile', '$parse', '$document', '$position', 'dateFilter', 'dateParser', 'datepickerPopupConfig','ecNavigator',
-        function ($compile, $parse, $document, $position, dateFilter, dateParser, datepickerPopupConfig,ecNavigator) {
+    .directive('datepickerPopup', ['$compile', '$parse', '$document', '$position', 'dateFilter', 'dateParser', 'datepickerPopupConfig',
+        function ($compile, $parse, $document, $position, dateFilter, dateParser, datepickerPopupConfig) {
             return {
                 restrict: 'EA',
                 require: 'ngModel',
@@ -1447,7 +1447,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
 
                     //scope.showButtonBar = angular.isDefined(attrs.showButtonBar) ? scope.$parent.$eval(attrs.showButtonBar) : datepickerPopupConfig.showButtonBar;
                     scope.showButtonBar = false;
-                    var isIE8 = ecNavigator.IsIE8();
+                    var isIE8 = false;
                     scope.getText = function( key ) {
                         return scope[key + 'Text'] || datepickerPopupConfig[key + 'Text'];
                     };
