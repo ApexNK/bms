@@ -1363,16 +1363,11 @@ table input[type="checkbox"] {
 
 .login-box .logo {
     position: absolute;
-    top: -90px;
-    left: 245px;
-    width: 150px;
-    height: 150px;
+    top: 18px;
+    left: 220px;
+    font-size: 30px;
 }
 
-.login-box .logo img {
-    width: 150px;
-    height: 150px;
-}
 
 .login-box .sys-name {
     width: 190px;

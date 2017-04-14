@@ -25,6 +25,7 @@
             };
             $scope.pDateCtrl = {IsDateStart: false, IsDateEnd: false};
             $scope.rDateCtrl = {IsDateStart: false, IsDateEnd: false};
+            $scope.tDateCtrl = {IsDateStart: false, IsDateEnd: false};
             $scope.addMember = function (isValid) {
                 
             }

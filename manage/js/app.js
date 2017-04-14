@@ -7,7 +7,6 @@
             $document.bind("selectstart dragstart contextmenu", function () {
                 return false;
             });
-
             $state.go("app.workboard.main");
         }])
         .controller("AppCtrl", ['$scope', "$state", '$rootScope', 'ecHttp', "UserContextService", function ($scope, $state, $rootScope, ecHttp, UserContextService) {
@@ -20,13 +19,13 @@
             };
             $scope.state = $state;
             $scope.app.settings.sideNav = false;
-            ecHttp.Get("Account/UserInfo").then(function (data) {
-                if (data.Code !== 0) {
-                    return;
-                }
-                UserContextService.SetUserInfo(data.Value);
-                $rootScope.CurrentUser = data.Value;
-            });
+            // ecHttp.Get("Account/UserInfo").then(function (data) {
+            //     if (data.Code !== 0) {
+            //         return;
+            //     }
+            //     UserContextService.SetUserInfo(data.Value);
+            //     $rootScope.CurrentUser = data.Value;
+            // });
             $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
                     var stateStr = [];
                     stateStr = toState.name.split(".");
@@ -38,7 +37,7 @@
                         }
                         return;
                     }
-                    if (toState.name === "app.store.homepage" || toState.name === "app.workboard.main" ) {
+                    if (toState.name === "app.workboard.main" ) {
                         $scope.app.settings.sideNav = false;
                     } else {
                         $scope.app.settings.sideNav = true;

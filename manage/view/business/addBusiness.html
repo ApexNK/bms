@@ -6,6 +6,11 @@
                    maxlength="20" ec-focus required>
         </div>
         <div class="form-group">
+            <label class="control-label"><i>*</i>手机号码：</label>
+            <input type="text" class="form-control" name="memberPhoneNum" ng-model="member.PhoneNum"
+                   maxlength="11" ec-focus required>
+        </div>
+        <div class="form-group">
             <label class="control-label"><i>*</i>类型：</label>
             <select class="form-control" name="memberType" ng-model="member.type"
                     ng-options="item.id as item.name for item in memberTypes"></select>
@@ -31,7 +36,10 @@
         </div>
         <div class="form-group">
             <label class="control-label">转让日期：</label>
-            <input type="text" class="form-control" name="transferDate" ng-model="member.transferDate">
+            <input type="text" class="form-control no-background-color" placeholder="请选择"
+                   ng-click="tDateCtrl.IsDateStart = true;tDateCtrl.IsDateEnd=false" datepicker-options="{closeTimer:true}"
+                   datepicker-popup="{{'yyyy-MM-dd'}}" ng-model="member.transferDate"
+                   is-open="tDateCtrl.IsDateStart" close-text="关闭" >
         </div>
         <div class="form-group">
             <label class="control-label"><i>*</i>回购日期：</label>
