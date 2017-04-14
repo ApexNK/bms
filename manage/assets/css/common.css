@@ -446,7 +446,7 @@ a:hover, a:visited, a:hover {
 /* 页面框架 */
 .side-nav {
     position: fixed;
-    width: 160px;
+    width: 130px;
     left: 110px;
     top: 0;
     padding-top: 60px;
@@ -461,7 +461,7 @@ a:hover, a:visited, a:hover {
 }
 
 .main-body.show-sub {
-    margin-left: 270px;
+    margin-left: 230px;
 }
 
 .main-body.hide-sub {

@@ -1,98 +1,79 @@
-<div class="row content-title">
-    <div ec-path-info></div>
-</div>
 <div class="row wrapper bg-color container-border">
-    <div tabset type="tab-bar" ng-if="!showInfo">
-        <div tab heading='信息列表' active="activeFlag[0]" ng-click="getBusinessList()">
+    <div tabset type="tab-bar" ng-if="!viewFlag.showChild">
+        <div tab heading='信息列表'>
             <div class="padder-v clearfix">
                 <div class="col-xs-4 no-padder">
-                    <button class="btn btn-sm btn-primary m-r-sm" ng-click="addBusiness()"><i class="ec ec-plus"></i> 新增
+                    <button class="btn btn-sm btn-primary m-r-sm"  type="button" ng-click="addMember()"><i class="ec ec-plus"></i> 新增
                     </button>
-                    <!--<button class="btn btn-info" ng-click="batDelStaff()">删除</button>-->
                 </div>
                 <div class="col-xs-8 no-padder table-toolbar clearfix">
-                    <div class="pull-right btn-group" role="group">
-                        <button type="button" class="btn btn-sm btn-success" ng-click="search()" title="刷新">
-                            <i class="ec ec-refresh"></i>
-                        </button>
-                    </div>
-                    <div class="search-bar">
-                        <button type="button" class="btn btn-stamp"
-                                ng-click="SearchControl.IsAdvance= !SearchControl.IsAdvance">
-                            高级<br>搜索
-                        </button>
-                    </div>
                     <div class="input-bar">
                         <div class="input-group clearfix">
-                            <input type="text" class="form-control" placeholder="请输入商户名称"
-                                   ng-model="SearchControl.CompanyName">
+                            <input type="text" class="form-control" placeholder="请输入会员名称"
+                                   ng-model="searchContent.memberName">
                             <span class="input-group-addon" ng-click="search()">搜索</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 form-horizontal advance-search" ng-show="SearchControl.IsAdvance">
-                    <div class="col-xs-10">
-                        <div class="search-cell clearfix">
-                            <label class="control-label">商户编号：</label>
-                            <input type="text" class="form-control" placeholder="请输入商户编号"
-                                   ng-model="SearchControl.OrgId">
-                        </div>
-                        <div class="search-cell clearfix">
-                            <label class="control-label">商户名称：</label>
-                            <input type="text" class="form-control" placeholder="请输入商户名称"
-                                   ng-model="SearchControl.CompanyName">
-                        </div>
-                        <div class="search-cell clearfix">
-                            <label class="control-label">商户来源：</label>
-                            <select class="form-control" ng-model="SearchControl.RegChannel">
-                                <option value="">请选择</option>
-                                <option value="1">管理录入</option>
-                                <option value="2">自助注册</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-xs-2 text-left search-panel">
-                        <button class="btn btn-success btn-sm m-r-sm" ng-click="search()">确定</button>
-                        <button class="btn btn-default btn-sm" ng-click="clear()">清空</button>
-                    </div>
-                    <div class="hide-advance" ng-click="SearchControl.IsAdvance=false" title="收起搜索栏">
-                        <i class="ec ec-arrow-line"></i> 收起
-                    </div>
-                </div>
+                <!--<div class="col-xs-12 form-horizontal advance-search" ng-show="SearchControl.IsAdvance">-->
+                    <!--<div class="col-xs-10">-->
+                        <!--<div class="search-cell clearfix">-->
+                            <!--<label class="control-label">会员账号：</label>-->
+                            <!--<input type="text" class="form-control" placeholder="请输入会员账号"-->
+                                   <!--ng-model="SearchControl.OrgId">-->
+                        <!--</div>-->
+                        <!--<div class="search-cell clearfix">-->
+                            <!--<label class="control-label">商户名称：</label>-->
+                            <!--<input type="text" class="form-control" placeholder="请输入会员名称"-->
+                                   <!--ng-model="SearchControl.CompanyName">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-2 text-left search-panel">-->
+                        <!--<button class="btn btn-success btn-sm m-r-sm" ng-click="search()">确定</button>-->
+                        <!--<button class="btn btn-default btn-sm" ng-click="clear()">清空</button>-->
+                    <!--</div>-->
+                    <!--<div class="hide-advance" ng-click="SearchControl.IsAdvance=false" title="收起搜索栏">-->
+                        <!--<i class="ec ec-arrow-line"></i> 收起-->
+                    <!--</div>-->
+                <!--</div>-->
                 <table class="col-xs-12 table table-fixed m-t">
                     <thead>
                     <tr>
-                        <th width="18%">商户编号</th>
-                        <th width="35%">商户名称</th>
-                        <th width="15%">商户状态</th>
-                        <th width="15%">商户来源</th>
-                        <th width="17%">操作</th>
+                        <th width="8%" class="text-center">会员账号</th>
+                        <th width="10%" class="text-center">会员姓名</th>
+                        <th width="8%" class="text-center">会员类型</th>
+                        <th width="10%" class="text-center">购买数量</th>
+                        <th width="8%" class="text-center">购买成本</th>
+                        <th width="12%" class="text-center">投资金额</th>
+                        <th width="12%" class="text-center">当前价值</th>
+                        <th width="10%" class="text-center">盈亏</th>
+                        <th width="8%" class="text-center">回购时间</th>
+                        <th width="14%" class="text-center">操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-if="businessList.length == 0">
-                        <td colspan="5" class="text-center">暂无商户信息，请新增商户</td>
+                    <tr ng-if="memberList.length == 0">
+                        <td colspan="10" class="text-center">暂无会员信息，请新增会员</td>
                     </tr>
-                    <tr ng-repeat="item in businessList track by $index">
-                        <td>
-                            {{item.OrgId}}
+                    <tr ng-repeat="member in memberList track by $index">
+                        <td class="text-center">
+                            {{member.accountId}}
                         </td>
-                        <td class="overflow-dots">
+                        <td class="overflow-dots text-left">
                             <a title="查看详情"
-                               ng-click="showBusinessDetail($index)">{{item.CompanyName}}</a>
+                               ng-click="showMemberDetail($index)">{{member.name}}</a>
                         </td>
-                        <td ng-if="item.IsCompany">{{item.IsLock ? "未上线" :"已上线"}}</td>
-                        <td ng-if="!item.IsCompany">非企业</td>
-                        <td>{{item.RegChannel==1 ? "管理录入":(item.RegChannel==2?"自助注册":"无")}}</td>
-                        <td>
-                            <button class="btn btn-operate" ng-click="editBusiness($index)">修改</button>
-                            <button class="btn btn-operate" ng-if="item.IsCompany&& item.IsLock"
-                                    ng-click="lockBusiness($index,false)">上线
-                            </button>
-                            <button class="btn btn-operate" ng-if="item.IsCompany&& !item.IsLock"
-                                    ng-click="lockBusiness($index,true)">下线
-                            </button>
-                            <button class="btn btn-operate" ng-click="logoff($index)">注销</button>
+                        <td class="text-center">{{member.type}}</td>
+                        <td class="text-right">{{member.purchaseAmount | number}}</td>
+                        <td class="text-right">{{member.cost | currency:"￥"}}</td>
+                        <td class="text-right">{{member.totalAmount | currency:"￥"}}</td>
+                        <td class="text-right">{{member.currentAmount | currency:"￥"}}</td>
+                        <td class="text-right">{{member.withdraw | currency:"￥"}}</td>
+                        <td class="text-center">{{member.buyBackDate | EcDate}}</td>
+                        <td class="text-center">
+                            <button class="btn btn-operate" type="button" ng-click="editMember($index)">编辑</button>
+                            <button class="btn btn-operate" type="button" ng-click="showMemberDetail($index)">查看</button>
+                            <button class="btn btn-operate" type="button" ng-click="deleteMember($index)">删除</button>
                         </td>
                     </tr>
                     </tbody>
@@ -103,5 +84,5 @@
             </div>
         </div>
     </div>
-    <div ng-if="showInfo" ng-include="'view/business/businessInfo.html'"></div>
+    <div ui-view ng-show="viewFlag.showChild"></div>
 </div>

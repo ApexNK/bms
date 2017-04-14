@@ -21,10 +21,6 @@
                 {
                     Name: "会员信息维护",
                     State: "app.business.list"
-                },
-                {
-                    Name: "会员查询",
-                    State: "app.business.ownMerchant"
                 }
             ]
         }

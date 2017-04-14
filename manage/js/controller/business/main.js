@@ -17,12 +17,6 @@
                 templateUrl:"view/business/addBusiness.html",
                 controller:"AddBusinessCtrl"
             });
-            $stateProvider.state("app.business.ownMerchant", {
-                url: "/ownMerchant",
-                templateUrl: "view/business/ownMerchantList.html",
-                controller: 'OwnMerchantCtrl'
-            });
-
         }]);
 
 })(window, window.angular);

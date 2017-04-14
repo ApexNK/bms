@@ -189,67 +189,6 @@ angular.module("Directive.All", ["Directive.Validation"])
             "<i class='ec ec-check-circle' ng-if='!circleChecked'></i><span>{{circleTitle||'设置默认'}}</span></div>"
         };
     })
-    .directive("ecPathInfo", ['$state', '$compile', 'UserContextService', function ($state, $compile, UserContextService) {
-        return {
-            restrict: "A",
-            replace: "true",
-            link: function (scope, element, attrs, ctrl) {
-                var curState = [];
-                var secondaryMenu = [];
-                scope.pathInfo = [];
-                var platform = UserContextService.Platform();
-                if (angular.isDefined(attrs.breadCrumb)) {
-                    scope.pathInfo = scope.$parent.$eval(attrs.breadCrumb);
-                } else {
-                    parsePathInfo();
-                }
-                function parsePathInfo() {
-                    var primaryMenu = UserContextService.PrimaryMenu();
-                    for (var k in $state.$current.includes) {
-                        if (!k || k == "app") {
-                            continue;
-                        }
-                        curState.push(k);
-                    }
-                    secondaryMenu = UserContextService.SecondaryMenu(curState[0].substring(4));
-                    for (var i = 0, length = primaryMenu.length; i < length; i++) {
-                        var item = primaryMenu[i];
-                        if (item.State == curState[0]) {
-                            scope.pathInfo.push(item.Name);
-                            foreachSecMenu();
-                            break;
-                        }
-                    }
-                }
-
-                function foreachSecMenu() {
-                    if (secondaryMenu.length == 0) {
-                        return;
-                    }
-                    for (var i = 0, length = secondaryMenu.length; i < length; i++) {
-                        var item = secondaryMenu[i];
-                        var leng = item.Children.length;
-                        if (leng == 0) {
-                            continue;
-                        }
-                        for (var a = 0; a < leng; a++) {
-                            if (item.Children[a].State == curState[1]) {
-                                scope.pathInfo.push(item.Name);
-                                scope.pathInfo.push(item.Children[a].Name);
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                var template = "<div class='path'><i class='ec ec-map'></i>" +
-                    "<span ng-repeat='path in pathInfo track by $index'><i ng-if='!$first' class='m-l-xs m-r-xs'>&gt;</i>{{path}}</span></div>";
-                var formTemplate = angular.element(template);
-                $compile(formTemplate)(scope);
-                element.append(formTemplate);
-            }
-        };
-    }])
     //聚焦移除，失交显示
     .directive("ecFocus", function () {
         return {
