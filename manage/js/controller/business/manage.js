@@ -31,6 +31,7 @@
                 buyBackDate: "2017-12-30"
             };
             $scope.memberList.push(memberInfo);
+            var currentMember = {};
             
             $scope.addMember = function () {
                 $state.go("app.business.add");
@@ -41,39 +42,100 @@
             };
             
             $scope.showMemberDetail = function (index) {
-                
+                console.info("show Member Detail !!!!");
+                $state.go("app.business.list.memberDetail");
             };
+            $scope.showMemberDetail = setMemberDecorator($scope.showMemberDetail);
             
             $scope.editMember = function (index) {
-                
+                $state.go("app.business.list.modifyMember");
             };
+            $scope.editMember = setMemberDecorator($scope.editMember);
             
             $scope.deleteMember = function (index) {
                 ecWidget.ShowMessage("确定要删除****",MESG_TYPE.Ask).then(function (data) {
                     console.info(data);
                 });
             };
+            $scope.deleteMember = setMemberDecorator($scope.deleteMember);
+
+            $scope.getCurrentMemberData =  function () {
+                console.info("get current Member");
+                return currentMember;
+            };
+
+            function setMemberDecorator(fn) {
+                return function (args) {
+                    setCurrentMember(args);
+                    fn(args);
+                };
+            }
+            function setCurrentMember(index) {
+                console.info("current index is " + index);
+                currentMember = angular.copy($scope.memberList[index]);
+            }
+            $scope.$on($state.current.name, function () {
+                $scope.viewFlag.showChild = false;
+            });
+
+            $scope.$on("showListContent", function (event, showList) {
+                $scope.viewFlag.showChild = !showList;
+            });
 
         }])
         .controller("AddBusinessCtrl", ['$scope', 'ecHttp', 'ecWidget', '$state', '$stateParams', 'UserContextService', function ($scope, ecHttp, ecWidget, $state, $stateParams, UserContextService) {
             $scope.memberTypes = [{id:0, name:"劣后级"},{id:1,name:"优先级"}];
-            $scope.member = {
-                name:"",
-                type: 0,
-                purchaseAmount: 10000,
-                cost: 5,
-                purchaseDate: "2017-4-1",
-                lastestPrice: 4,
-                transferDate: "",
-                buyBackDate: "2020-1-1",
-                buyBackPrice: 8,
-                annualYield: 0.12
-            };
+            $scope.member = {};
             $scope.pDateCtrl = {IsDateStart: false, IsDateEnd: false};
             $scope.rDateCtrl = {IsDateStart: false, IsDateEnd: false};
             $scope.tDateCtrl = {IsDateStart: false, IsDateEnd: false};
+
+            var addedMember = {
+                init: function () {
+                    $scope.member = {type: 0};
+                },
+                saveMember: function () {
+                }
+            };
+            var modifiedMember = {
+                init: function () {
+                    $scope.$parent.getCurrentMemberData();
+                    UserContextService.SetParentViewStatus($scope);
+                    $scope.member = {
+                        name:"张董事长",
+                        type: 0,
+                        purchaseAmount: 10000,
+                        cost: 5,
+                        purchaseDate: "2017-4-1",
+                        lastestPrice: 4,
+                        transferDate: "",
+                        buyBackDate: "2020-1-1",
+                        buyBackPrice: 8,
+                        annualYield: 0.12
+                    };
+                },
+                saveMember: function () {
+                    window.history.go(-1);
+                }
+            };
+            var currentMember = ($state.current.name == "app.business.list.modifyMember") ? modifiedMember : addedMember;
+            
             $scope.addMember = function (isValid) {
-                
-            }
+                currentMember.saveMember();
+            };
+
+            (function () {
+                currentMember.init();
+            })();
+        }])
+        .controller("BusinessDetailCtrl", ['$scope', 'ecHttp', 'ecWidget', '$state', 'UserContextService',function ($scope, ecHttp, ecWidget, $state, UserContextService) {
+
+            $scope.goBack = function () {
+                window.history.go(-1);
+            };
+
+            (function () {
+                UserContextService.SetParentViewStatus($scope);
+            })();
         }])
 })(window, window.angular);

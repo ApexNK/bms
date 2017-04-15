@@ -1960,3 +1960,8 @@ table input[type="checkbox"] {
     color: #ff8e20;
     line-height: 1em;
 }
+
+.member-detail .col-xs-12 {
+    padding-left: 20px;
+    font-size: 14px;
+}

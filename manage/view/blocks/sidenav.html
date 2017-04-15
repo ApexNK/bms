@@ -9,7 +9,7 @@
         </a>
         <ul collapse="isCollapsed" class="menu-item">
             <li ng-repeat="item in menu.Children">
-                <a ui-sref="{{item.State}}" ng-class="{active:state.includes('{{item.State}}')}">
+                <a ui-sref="{{item.State}}" ng-class="{active:state.includes('{{item.State}}')}" ng-click="clickMenu(item.State)">
                     <i ng-class="{true:'icon-slide-nav thrid-nav-l',false:'icon-slide-nav thrid-nav'}[$last]"></i>
                     {{item.Name}}
                 </a>

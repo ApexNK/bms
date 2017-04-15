@@ -54,6 +54,9 @@
                     $scope.app.settings.sideNav = true;
                 }
             );
+            $scope.$on("noticeRoot",function (event,data) {
+                $scope.$broadcast(data);
+            });
         }])
         .config(['$stateProvider', '$urlRouterProvider', "$logProvider", function ($stateProvider, $urlRouterProvider, $logProvider) {
             $logProvider.debugEnabled(true);

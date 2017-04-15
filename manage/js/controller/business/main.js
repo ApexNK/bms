@@ -13,9 +13,19 @@
                 controller:"BusinessListCtrl"
             });
             $stateProvider.state("app.business.add", {
-                url: "/add?Id&type",
+                url: "/add",
                 templateUrl:"view/business/addBusiness.html",
                 controller:"AddBusinessCtrl"
+            });
+            $stateProvider.state("app.business.list.modifyMember", {
+                url: "/edit",
+                templateUrl: "view/business/addBusiness.html",
+                controller: 'AddBusinessCtrl'
+            });
+            $stateProvider.state("app.business.list.memberDetail", {
+                url: "/detail",
+                templateUrl: "view/business/businessDetail.html",
+                controller: 'BusinessDetailCtrl'
             });
         }]);
 

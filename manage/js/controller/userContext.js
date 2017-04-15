@@ -61,7 +61,11 @@
                     }
                 }
             }
-
+            $scope.clickMenu = function (state) {
+                if($state.current.name == state){
+                    $scope.$emit("noticeRoot",state);
+                }
+            }
         }])
     ;
 })(window, window.angular);

@@ -15,12 +15,12 @@
             Name: "会员信息",
             Children: [
                 {
-                    Name: "新增会员信息",
-                    State: "app.business.add"
-                },
-                {
                     Name: "会员信息维护",
                     State: "app.business.list"
+                },
+                {
+                    Name: "新增会员信息",
+                    State: "app.business.add"
                 }
             ]
         }

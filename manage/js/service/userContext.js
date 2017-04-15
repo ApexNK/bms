@@ -59,6 +59,17 @@
                     }
                 })
             };
+            function fnSetParentMainView(scope) {
+                scope.$on('$destroy', function () {
+                    showParentMainContent(true);
+                });
+
+                function showParentMainContent(isShow) {
+                    scope.$emit("showListContent", isShow);
+                }
+
+                showParentMainContent(false);
+            }
 
             return {
                 PrimaryMenu: fnPrimaryMenu,
@@ -67,7 +78,8 @@
                 Login: fnLogin,
                 SetUserInfo: fnSetUserInfo,
                 GetUserInfo: fnGetUserInfo,
-                SetSecondaryMenuName: fnSetSecondaryMenuName
+                SetSecondaryMenuName: fnSetSecondaryMenuName,
+                SetParentViewStatus: fnSetParentMainView
             };
         }]);
 })(window, window.angular);
