@@ -3,11 +3,11 @@
     
     <form novalidate @submit.prevent="submit" class="login-container">
       <h4 class="text-center logo">恒玖盈</h4>
-      <label for="mobile">
-        <input type="text" id="mobile" placeholder="手机号" v-model.trim="mobile">
+      <label for="username">
+        <input type="text" id="username" placeholder="账号" v-model.trim="username">
       </label>
-      <label for="mobile">
-        <input type="text" id="mobile" placeholder="账号" v-model.trim="username">
+      <label for="password">
+        <input type="password" id="password" placeholder="密码" v-model.trim="password">
       </label>
       <label for="submit">
         <button type="submit">验证</button>
@@ -23,7 +23,7 @@
     export default {
       data () {
         return {
-          mobile: '',
+          password: '',
           username: ''
         };
       },
