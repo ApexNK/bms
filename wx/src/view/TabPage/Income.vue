@@ -5,8 +5,11 @@
       <h2 class="text-center main-color">4000.00</h2>
       <div class="text-center">当月累计收益 <span class="main-color">+3000.00</span></div>
       <div class="total-bar row row-no-padding">
-        <div class="col">当月累计收益<br/><span class="main-color">+3000000.00 </span></div>
-        <div class="col">积分<br/><span class="main-color">+30000  </span></div>
+        <div class="col">
+          当月累计收益<br/>
+          <span class="main-color">+5846.00</span>
+          </div>
+        <div class="col">积分<br/><span class="main-color">+30000</span></div>
       </div>
     </div>
     <ul class="list">
@@ -82,10 +85,12 @@
     }
   }
   .list {
+    padding: 0 10px;
     .item {
       height: 40px;
       line-height: 40px;
       color: #fff;
+      padding-right: 10px;
       border-bottom: 1px solid #fff;
     }
   }

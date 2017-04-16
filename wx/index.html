@@ -5,33 +5,437 @@
     <meta charset="utf-8" name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>恒玖盈</title>
     <style>
-      body {
-          width: 100%;
-          height: 100%;
-          background: url('./static/img/bg.png') no-repeat center center ;
-          /*background-size: cover;  */
-      }
+        html{
+            background: #000;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: url('./static/img/bg.png') no-repeat center center;
+            background-size:cover; 
+        }
+        
+        .loaders {
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 1 auto;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        .loaders .loader {
+            box-sizing: border-box;
+            display: flex;
+            flex: 0 1 auto;
+            flex-direction: column;
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-basis: 25%;
+            max-width: 25%;
+            height: 200px;
+            align-items: center;
+            justify-content: center;
+        }
+        /**
+ * Lines
+ */
+        
+        @-webkit-keyframes line-scale {
+            0% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+            50% {
+                -webkit-transform: scaley(0.4);
+                transform: scaley(0.4);
+            }
+            100% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+        }
+        
+        @keyframes line-scale {
+            0% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+            50% {
+                -webkit-transform: scaley(0.4);
+                transform: scaley(0.4);
+            }
+            100% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+        }
+        
+        .line-scale > div:nth-child(1) {
+            -webkit-animation: line-scale 1s 0.1s infinite cubic-bezier(.2, .68, .18, 1.08);
+            animation: line-scale 1s 0.1s infinite cubic-bezier(.2, .68, .18, 1.08);
+        }
+        
+        .line-scale > div:nth-child(2) {
+            -webkit-animation: line-scale 1s 0.2s infinite cubic-bezier(.2, .68, .18, 1.08);
+            animation: line-scale 1s 0.2s infinite cubic-bezier(.2, .68, .18, 1.08);
+        }
+        
+        .line-scale > div:nth-child(3) {
+            -webkit-animation: line-scale 1s 0.3s infinite cubic-bezier(.2, .68, .18, 1.08);
+            animation: line-scale 1s 0.3s infinite cubic-bezier(.2, .68, .18, 1.08);
+        }
+        
+        .line-scale > div:nth-child(4) {
+            -webkit-animation: line-scale 1s 0.4s infinite cubic-bezier(.2, .68, .18, 1.08);
+            animation: line-scale 1s 0.4s infinite cubic-bezier(.2, .68, .18, 1.08);
+        }
+        
+        .line-scale > div:nth-child(5) {
+            -webkit-animation: line-scale 1s 0.5s infinite cubic-bezier(.2, .68, .18, 1.08);
+            animation: line-scale 1s 0.5s infinite cubic-bezier(.2, .68, .18, 1.08);
+        }
+        
+        .line-scale > div {
+            background-color: #fff;
+            width: 4px;
+            height: 35px;
+            border-radius: 2px;
+            margin: 2px;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            display: inline-block;
+        }
+        
+        @-webkit-keyframes line-scale-party {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+            50% {
+                -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+            }
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes line-scale-party {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+            50% {
+                -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+            }
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+        
+        .line-scale-party > div:nth-child(1) {
+            -webkit-animation-delay: 0.77s;
+            animation-delay: 0.77s;
+            -webkit-animation-duration: 1.26s;
+            animation-duration: 1.26s;
+        }
+        
+        .line-scale-party > div:nth-child(2) {
+            -webkit-animation-delay: 0.29s;
+            animation-delay: 0.29s;
+            -webkit-animation-duration: 0.43s;
+            animation-duration: 0.43s;
+        }
+        
+        .line-scale-party > div:nth-child(3) {
+            -webkit-animation-delay: 0.28s;
+            animation-delay: 0.28s;
+            -webkit-animation-duration: 1.01s;
+            animation-duration: 1.01s;
+        }
+        
+        .line-scale-party > div:nth-child(4) {
+            -webkit-animation-delay: 0.74s;
+            animation-delay: 0.74s;
+            -webkit-animation-duration: 0.73s;
+            animation-duration: 0.73s;
+        }
+        
+        .line-scale-party > div {
+            background-color: #fff;
+            width: 4px;
+            height: 35px;
+            border-radius: 2px;
+            margin: 2px;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            display: inline-block;
+            -webkit-animation-name: line-scale-party;
+            animation-name: line-scale-party;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            -webkit-animation-delay: 0;
+            animation-delay: 0;
+        }
+        
+        @-webkit-keyframes line-scale-pulse-out {
+            0% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+            50% {
+                -webkit-transform: scaley(0.4);
+                transform: scaley(0.4);
+            }
+            100% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+        }
+        
+        @keyframes line-scale-pulse-out {
+            0% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+            50% {
+                -webkit-transform: scaley(0.4);
+                transform: scaley(0.4);
+            }
+            100% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+        }
+        
+        .line-scale-pulse-out > div {
+            background-color: #fff;
+            width: 4px;
+            height: 35px;
+            border-radius: 2px;
+            margin: 2px;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            display: inline-block;
+            -webkit-animation: line-scale-pulse-out 0.9s 0s infinite cubic-bezier(.85, .25, .37, .85);
+            animation: line-scale-pulse-out 0.9s 0s infinite cubic-bezier(.85, .25, .37, .85);
+        }
+        
+        .line-scale-pulse-out > div:nth-child(2),
+        .line-scale-pulse-out > div:nth-child(4) {
+            -webkit-animation-delay: 0.2s !important;
+            animation-delay: 0.2s !important;
+        }
+        
+        .line-scale-pulse-out > div:nth-child(1),
+        .line-scale-pulse-out > div:nth-child(5) {
+            -webkit-animation-delay: 0.4s !important;
+            animation-delay: 0.4s !important;
+        }
+        
+        @-webkit-keyframes line-scale-pulse-out-rapid {
+            0% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+            80% {
+                -webkit-transform: scaley(0.3);
+                transform: scaley(0.3);
+            }
+            90% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+        }
+        
+        @keyframes line-scale-pulse-out-rapid {
+            0% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+            80% {
+                -webkit-transform: scaley(0.3);
+                transform: scaley(0.3);
+            }
+            90% {
+                -webkit-transform: scaley(1);
+                transform: scaley(1);
+            }
+        }
+        
+        .line-scale-pulse-out-rapid > div {
+            background-color: #fff;
+            width: 4px;
+            height: 35px;
+            border-radius: 2px;
+            margin: 2px;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            display: inline-block;
+            -webkit-animation: line-scale-pulse-out-rapid 0.9s 0s infinite cubic-bezier(.11, .49, .38, .78);
+            animation: line-scale-pulse-out-rapid 0.9s 0s infinite cubic-bezier(.11, .49, .38, .78);
+        }
+        
+        .line-scale-pulse-out-rapid > div:nth-child(2),
+        .line-scale-pulse-out-rapid > div:nth-child(4) {
+            -webkit-animation-delay: 0.25s !important;
+            animation-delay: 0.25s !important;
+        }
+        
+        .line-scale-pulse-out-rapid > div:nth-child(1),
+        .line-scale-pulse-out-rapid > div:nth-child(5) {
+            -webkit-animation-delay: 0.5s !important;
+            animation-delay: 0.5s !important;
+        }
+        
+        @-webkit-keyframes line-spin-fade-loader {
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes line-spin-fade-loader {
+            50% {
+                opacity: 0.3;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .line-spin-fade-loader {
+            position: relative;
+        }
+        
+        .line-spin-fade-loader > div:nth-child(1) {
+            top: 20px;
+            left: 0;
+            -webkit-animation: line-spin-fade-loader 1.2s 0.12s infinite ease-in-out;
+            animation: line-spin-fade-loader 1.2s 0.12s infinite ease-in-out;
+        }
+        
+        .line-spin-fade-loader > div:nth-child(2) {
+            top: 13.63636px;
+            left: 13.63636px;
+            -webkit-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            -webkit-animation: line-spin-fade-loader 1.2s 0.24s infinite ease-in-out;
+            animation: line-spin-fade-loader 1.2s 0.24s infinite ease-in-out;
+        }
+        
+        .line-spin-fade-loader > div:nth-child(3) {
+            top: 0;
+            left: 20px;
+            -webkit-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+            -webkit-animation: line-spin-fade-loader 1.2s 0.36s infinite ease-in-out;
+            animation: line-spin-fade-loader 1.2s 0.36s infinite ease-in-out;
+        }
+        
+        .line-spin-fade-loader > div:nth-child(4) {
+            top: -13.63636px;
+            left: 13.63636px;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-animation: line-spin-fade-loader 1.2s 0.48s infinite ease-in-out;
+            animation: line-spin-fade-loader 1.2s 0.48s infinite ease-in-out;
+        }
+        
+        .line-spin-fade-loader > div:nth-child(5) {
+            top: -20px;
+            left: 0;
+            -webkit-animation: line-spin-fade-loader 1.2s 0.6s infinite ease-in-out;
+            animation: line-spin-fade-loader 1.2s 0.6s infinite ease-in-out;
+        }
+        
+        .line-spin-fade-loader > div:nth-child(6) {
+            top: -13.63636px;
+            left: -13.63636px;
+            -webkit-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            -webkit-animation: line-spin-fade-loader 1.2s 0.72s infinite ease-in-out;
+            animation: line-spin-fade-loader 1.2s 0.72s infinite ease-in-out;
+        }
+        
+        .line-spin-fade-loader > div:nth-child(7) {
+            top: 0;
+            left: -20px;
+            -webkit-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+            -webkit-animation: line-spin-fade-loader 1.2s 0.84s infinite ease-in-out;
+            animation: line-spin-fade-loader 1.2s 0.84s infinite ease-in-out;
+        }
+        
+        .line-spin-fade-loader > div:nth-child(8) {
+            top: 13.63636px;
+            left: -13.63636px;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-animation: line-spin-fade-loader 1.2s 0.96s infinite ease-in-out;
+            animation: line-spin-fade-loader 1.2s 0.96s infinite ease-in-out;
+        }
+        
+        .line-spin-fade-loader > div {
+            background-color: #fff;
+            width: 4px;
+            height: 35px;
+            border-radius: 2px;
+            margin: 2px;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            position: absolute;
+            width: 5px;
+            height: 15px;
+        }
+        .loader{
+            position: absolute;
+            left: 50%;
+            margin-left: -28px;
+            top:50%;
+            margin-top: -22px;
+        }
     </style>
     <link rel="stylesheet" href="./static/animate.css">
     <!--<script src="./static/nativeShare.js"></script>
     <link rel="stylesheet" href="./static/nativeShare.css"/>-->
-    <link rel="stylesheet" href="./static/css/fontello.css"/>
+    <link rel="stylesheet" href="./static/css/fontello.css" />
 </head>
 
 <body>
-    
+
     <div id="app">
-        <app></app>
+        <app>
+            <div class="loader">
+                <div class="loader-inner line-scale-pulse-out">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </app>
     </div>
-    <script>
-        function setRem () {
-            var iCh = document.documentElement.clientWidth;
-            document.documentElement.style.fontSize = iCh/16 + 'px';
-        }
-        setRem();
-        window.onresize = function () {
-            setRem();
-        }
-    </script>
 </body>
+
 </html>

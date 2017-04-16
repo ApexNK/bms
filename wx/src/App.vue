@@ -1,5 +1,5 @@
 <template>
-  <div class="root-container">
+  <div class="root-container animated fadeIn">
     <!--<transition
     name="custom-classes-transition"
     enter-active-class="animated flipInY"

@@ -6,6 +6,9 @@
       <label for="mobile">
         <input type="text" id="mobile" placeholder="手机号" v-model.trim="mobile">
       </label>
+      <label for="mobile">
+        <input type="text" id="mobile" placeholder="账号" v-model.trim="username">
+      </label>
       <label for="submit">
         <button type="submit">验证</button>
       </label>
@@ -20,7 +23,8 @@
     export default {
       data () {
         return {
-          mobile: ''
+          mobile: '',
+          username: ''
         };
       },
      
