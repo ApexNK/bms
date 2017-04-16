@@ -1,27 +1,35 @@
-import Home from 'VIEWS/Home.vue';
-import Stage from 'VIEWS/Stage.vue';
-import FinishPage from 'VIEWS/Finish.vue';
+import TabPage from 'VIEWS/TabPage/TabPage.vue';
+import UserCenter from 'VIEWS/TabPage/UserCenter.vue';
+import Income from 'VIEWS/TabPage/Income.vue';
+import LoginPage from 'VIEWS/LoginPage.vue';
 
 const routes = [
   {
-    path: '/normalModel/:startindex/end/:endindex',
-    name: 'normalModel',
-    component: Stage
-  },
-  {
-    path: '/strangeModel/:startindex/end/:endindex',
-    name: 'strangeModel',
-    component: Stage
-  },
-  {
-    path: '/finish/:startindex/end/:endindex/name/:modelname/curstate/:state/cost/:time',
-    name: 'finish',
-    component: FinishPage
-  },
-  {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'login',
+    component: LoginPage
+  },
+  {
+    path: '/Tab',
+    name: 'Tab',
+    component: TabPage,
+    children: [
+      {
+        path: '/',
+        redirect: '/Tab/UserCenter',
+        component: UserCenter
+      },
+      {
+        path: 'UserCenter',
+        name:'Tab.UserCenter',
+        component: UserCenter
+      },
+      {
+        path: 'Income',
+        name: 'Tab.Income',
+        component: Income
+      }
+    ]
   }
 ]
 

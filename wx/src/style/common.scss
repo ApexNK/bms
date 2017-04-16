@@ -1,6 +1,7 @@
 @import './reset.scss';
 @import './mixin.scss';
 @import './var.scss';
+@import './components/index.scss';
 // @import './components/index.scss';
 .ofh{
   overflow: hidden
@@ -53,14 +54,16 @@
   border: 1px solid #333;
   cursor: pointer;
 }
-
-
-.card {
-  @extend .blk;
-  @extend .padding;
-  @extend .ofh;
-  @include setShadow();
-  @include box-sizing;
-  font-size: $baseFontSize;
+.main-color{
+  color:$mainColor;
 }
+
+// .card {
+//   @extend .blk;
+//   @extend .padding;
+//   @extend .ofh;
+//   @include setShadow();
+//   @include box-sizing;
+//   font-size: $baseFontSize;
+// }
 

@@ -52,7 +52,7 @@
       },
       mounted () {
         this.loadEle = this.$el.querySelector(`.loader${this.scrollId}`)
-        this.$el.style.overflow = 'scroll';
+        // this.$el.style.overflow = 'scroll';
         this.onInfinited();
         this.$el.addEventListener('scroll', this.scroll);
       },
