@@ -7,7 +7,9 @@
         </div>
         <div class=" container has-tabs-top padding">
           <transition :name="transitionName">
-            <router-view class="child-view"></router-view>
+            <keep-alive>
+              <router-view class="child-view"></router-view>
+            </keep-alive>
           </transition>
         </div>
     </Scroller>
