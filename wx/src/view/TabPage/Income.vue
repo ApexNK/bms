@@ -1,37 +1,36 @@
 <template>
   <Scroller>
     <div class="card dashboard">
-      <div class="text-center">昨日收益(元)</div>
-      <h2 class="text-center main-color">4000.00</h2>
-      <div class="text-center">当月累计收益 <span class="main-color">+3000.00</span></div>
+      <div class="text-center">总收益(元)</div>
+      <h2 class="text-center warn-color">4000.00</h2>
       <div class="total-bar row row-no-padding">
         <div class="col">
-          当月累计收益<br/>
-          <span class="main-color">+5846.00</span>
+          今日收益<br/>
+          <span class="warn-color">+5846.00</span>
           </div>
-        <div class="col">积分<br/><span class="main-color">+30000</span></div>
+        <div class="col">
+          当月累计收益<br/>
+          <span class="warn-color">+5846.00</span>
+          </div>
+        <div class="col">业绩奖励<br/><span class="warn-color">+30000</span></div>
       </div>
     </div>
     <ul class="list">
-      <li class="item">
-        <span class="">年化收益率:</span>
-        <span class="fr main-color">8.8</span>
-      </li>
       <li class="item">
         <span class="">投资收益率:</span>
         <span class="fr main-color">9.9</span>
       </li>
       <li class="item">
-        <span class="">业绩奖励:</span>
-        <span class="fr warn">+3000.00 </span>
+        <span class="">积分:</span>
+        <span class="fr warn-color">+3000.00 </span>
       </li>
       <li class="item">
         <span class="">盈亏提现:</span>
-        <span class="fr down">-3000.00 </span>
+        <span class="fr warn-color">+3000.00 </span>
       </li>
       <li class="item">
         <span class="">总提现金额:</span>
-        <span class="fr main-color">9000.00</span>
+        <span class="fr warn-color">9000.00</span>
       </li>
     </ul>
   </Scroller>
@@ -64,7 +63,7 @@
   @import '~STYLE/components/NineGrid.scss';
   .dashboard{
     position: relative;
-    padding-bottom: 80px;
+    padding-bottom: 60px;
     overflow: hidden;
     
     h2{

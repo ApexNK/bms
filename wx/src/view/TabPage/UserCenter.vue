@@ -15,12 +15,10 @@
     </div>
     <div class="card">
       <div class="row row-no-padding row-wrap">
-        <div class="col-50">投资金额：<span class="main-color">900001</span></div>
-        <div class="col-50">最新价格：<span class="main-color">900001</span></div>
-        <div class="col-50">最新转让日期：<span class="main-color">2017,12,30</span></div>
-        <div class="col-50">当前价值：<span class="main-color">900001</span></div>
-        <div class="col-50">盈亏：<span class="main-color">900001</span></div>
-        <div class="col-50">盈亏比例：<span class="main-color">900001</span>万</div>
+        <div class="col-50">最新价格：<span class="warn-color">900001</span></div>
+        <div class="col-50">当前价值：<span class="main-color">9000万元</span></div>
+        <div class="col-50">盈亏：<span class="warn-color">900001</span></div>
+        <div class="col-50">盈亏比例：<span class="warn-color">401%</span></div>
         <div class="col-50">回购日期：<span class="main-color">900001</span></div>
         <div class="col-50">最低回购价：<span class="main-color">900001</span></div>
         

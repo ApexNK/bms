@@ -58,6 +58,7 @@
     margin-top: -45px;
     right: 20px;
     left:20px;
+    font-size:($baseFontSize );
     label{
       margin-top: 15px;
       display: block;
@@ -65,6 +66,7 @@
       background: rgba(255,255,255,.3);
       border-radius: 4px;
       input {
+        font-size:($baseFontSize );
         color: #fff;
         padding-left:10px;
         line-height: 40px;
@@ -81,6 +83,7 @@
         height: 40px;
         background: $mainColor;
         border-radius: 4px;
+        font-size:($baseFontSize );
         border:1px solid $mainColor;
         color: #040000;
         letter-spacing: 5px;

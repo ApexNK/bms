@@ -6,6 +6,7 @@
 html * {
     outline: 0;
     -webkit-text-size-adjust: none;
+    font-size: $miniFontSize;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 .ofh{
@@ -62,7 +63,9 @@ html * {
 .main-color{
   color:$mainColor;
 }
-
+.warn-color {
+  color: $warnColor;
+}
 // .card {
 //   @extend .blk;
 //   @extend .padding;
