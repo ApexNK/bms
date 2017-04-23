@@ -19,7 +19,7 @@
             // Intercept failed requests
             return promise.then(function (response) {
 
-                if (response.data.Code == 1000005 || response.data.Code == 1000007) {
+                if (response.data.code == 6) {
                     // The request bounced because it was not authorized - add a new request to the retry queue
                     var retryPromise = queue.pushRetryFn('unauthorized-server', function retryRequest() {
                         // We must use $injector to get the $http service to prevent circular dependency

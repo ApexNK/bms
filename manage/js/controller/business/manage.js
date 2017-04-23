@@ -19,26 +19,17 @@
                 TotalRows: 0,
                 PageSize: 10
             };
-            var memberInfo = {
-                accountId: "900001",
-                name: "张董事长",
-                type:"优先级",
-                purchaseAmount: 100000,
-                cost: 12,
-                totalAmount: 1200000,
-                currentAmount: 1330083,
-                withdraw: 130083,
-                buyBackDate: "2017-12-30"
-            };
-            $scope.memberList.push(memberInfo);
+            $scope.memberTypes = [{id:0, name:"劣后级"},{id:1,name:"优先级"}];
+
             var currentMember = {};
-            
+            var currentIndex = 0;
+
             $scope.addMember = function () {
                 $state.go("app.business.add");
             };
             
-            $scope.search = function () {
-                
+            $scope.pageChange = function () {
+                getMemberList();
             };
             
             $scope.showMemberDetail = function (index) {
@@ -72,6 +63,7 @@
             }
             function setCurrentMember(index) {
                 console.info("current index is " + index);
+                currentIndex = index;
                 currentMember = angular.copy($scope.memberList[index]);
             }
             $scope.$on($state.current.name, function () {
@@ -84,8 +76,8 @@
 
             function getMemberList() {
                 var param = {
-                    page: 1,
-                    size: 10
+                    page: $scope.pageInfo.CurPage || 1,
+                    size: $scope.pageInfo.PageSize || 10
                 };
                 var request = "member/list";
                 var urlParam = "";
@@ -100,10 +92,17 @@
                     request += urlParam;
                 }
                 ecHttp.Post(request).then(function (data) {
-                    console.info(data);
+                    if(data.code !== 0) {
+                        ecWidget.ShowMessage(data.message);
+                        return;
+                    }
+                    $scope.memberList = data.value.content;
                 })
             }
 
+            $scope.$on("updateCurrentMember", function(event,member){
+                $scope.memberList[currentIndex] = angular.copy(member);
+            });
             (function () {
                 getMemberList();
             })();
@@ -125,30 +124,22 @@
             };
             var modifiedMember = {
                 init: function () {
-                    $scope.$parent.getCurrentMemberData();
+                    $scope.member = $scope.$parent.getCurrentMemberData();
+                    if(!$scope.member) {
+                        $state.go("app.business.list");
+                        return;
+                    }
                     UserContextService.SetParentViewStatus($scope);
-                    $scope.member = {
-                        name:"张董事长",
-                        type: 0,
-                        purchaseAmount: 10000,
-                        cost: 5,
-                        purchaseDate: "2017-4-1",
-                        lastestPrice: 4,
-                        transferDate: "",
-                        buyBackDate: "2020-1-1",
-                        buyBackPrice: 8,
-                        annualYield: 0.12
-                    };
                 },
                 saveMember: function () {
-                    window.history.go(-1);
+                    saveMemberInfo(true);
                 }
             };
             var currentMember = ($state.current.name == "app.business.list.modifyMember") ? modifiedMember : addedMember;
             
             $scope.addMember = function (isValid) {
                 if(!isValid) {
-                    ecHttp.ShowMessage("还有必填项未填写，请完善");
+                    ecWidget.ShowMessage("还有必填项未填写，请完善");
                     return;
                 }
                 currentMember.saveMember();
@@ -166,7 +157,7 @@
                 })
             };
 
-            function saveMemberInfo() {
+            function saveMemberInfo(isEdited) {
                 var param = {
                     name:"",
                     loginName: "",
@@ -189,7 +180,13 @@
                         ecWidget.ShowMessage(data.message);
                         return;
                     }
-                    $state.go("app.business.list");
+                    if (isEdited ){
+                        $scope.$emit("updateCurrentMember", data.value);
+                        window.history.go(-1);
+                    }else {
+                        $state.go("app.business.list");
+                    }
+
                 });
             }
 

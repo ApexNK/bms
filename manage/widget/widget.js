@@ -140,7 +140,7 @@
         }])
         .controller("LoginCtrl", ['$scope', '$window', '$modalInstance', 'UserContextService','$rootScope', function ($scope, $window, $modalInstance, UserContextService,$rootScope) {
 
-            $scope.user = {"LoginName": "", "Password": ""};
+            $scope.user = {"username": "", "password": ""};
             $scope.failLogin = false;
             $scope.showFormError = false;
             $scope.login = function (isValid) {
