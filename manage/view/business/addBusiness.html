@@ -29,7 +29,7 @@
             <input type="text" class="form-control" name="cost" ng-model="member.cost" required>
         </div>
         <div class="form-group">
-            <label class="control-label"><i>*</i>买入日期：</label>
+            <label class="control-label">买入日期：</label>
             <input type="text" class="form-control no-background-color" placeholder="请选择"
                    ng-click="pDateCtrl.IsDateStart = true;pDateCtrl.IsDateEnd=false" datepicker-options="{closeTimer:true}"
                    datepicker-popup="{{'yyyy-MM-dd'}}" ng-model="member.purchaseDate"
@@ -47,7 +47,7 @@
                    is-open="tDateCtrl.IsDateStart" close-text="关闭" >
         </div>
         <div class="form-group">
-            <label class="control-label"><i>*</i>回购日期：</label>
+            <label class="control-label">回购日期：</label>
             <input type="text" class="form-control no-background-color" placeholder="请选择"
                    ng-click="rDateCtrl.IsDateStart = true;rDateCtrl.IsDateEnd=false" datepicker-options="{closeTimer:true}"
                    datepicker-popup="{{'yyyy-MM-dd'}}" ng-model="member.buybackDate"
