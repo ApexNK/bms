@@ -6,18 +6,23 @@
                    maxlength="20" ec-focus required>
         </div>
         <div class="form-group">
-            <label class="control-label"><i>*</i>手机号码：</label>
-            <input type="text" class="form-control" name="memberPhoneNum" ng-model="member.PhoneNum"
-                   maxlength="11" ec-focus required>
+            <label class="control-label"><i>*</i>会员账号：</label>
+            <input type="text" class="form-control" name="memberLoginName" ng-model="member.loginName"
+                   maxlength="11" ec-focus required placeholder="微信登录验证账号" ng-blur="checkMemberLoginName()">
+        </div>
+        <div class="form-group">
+            <label class="control-label"><i>*</i>会员密码：</label>
+            <input type="text" class="form-control" name="memberPhoneNum" ng-model="member.loginPassword"
+                   maxlength="11" ec-focus required placeholder="微信登录验证密码">
         </div>
         <div class="form-group">
             <label class="control-label"><i>*</i>类型：</label>
-            <select class="form-control" name="memberType" ng-model="member.type"
+            <select class="form-control" name="memberType" ng-model="member.grade"
                     ng-options="item.id as item.name for item in memberTypes"></select>
         </div>
         <div class="form-group">
             <label class="control-label"><i>*</i>买入数量：</label>
-            <input type="text" class="form-control" name="amount" ng-model="member.purchaseAmount">
+            <input type="text" class="form-control" name="quantity" ng-model="member.quantity">
         </div>
         <div class="form-group">
             <label class="control-label"><i>*</i>购买成本：</label>
@@ -32,41 +37,41 @@
         </div>
         <div class="form-group">
             <label class="control-label"><i>*</i>最新价格：</label>
-            <input type="text" class="form-control" name="lastestPrice" ng-model="member.lastestPrice">
+            <input type="number" class="form-control" name="lastestPrice" ng-model="member.lastestPrice">
         </div>
         <div class="form-group">
             <label class="control-label">转让日期：</label>
             <input type="text" class="form-control no-background-color" placeholder="请选择"
                    ng-click="tDateCtrl.IsDateStart = true;tDateCtrl.IsDateEnd=false" datepicker-options="{closeTimer:true}"
-                   datepicker-popup="{{'yyyy-MM-dd'}}" ng-model="member.transferDate"
+                   datepicker-popup="{{'yyyy-MM-dd'}}" ng-model="member.selloutDate"
                    is-open="tDateCtrl.IsDateStart" close-text="关闭" >
         </div>
         <div class="form-group">
             <label class="control-label"><i>*</i>回购日期：</label>
             <input type="text" class="form-control no-background-color" placeholder="请选择"
                    ng-click="rDateCtrl.IsDateStart = true;rDateCtrl.IsDateEnd=false" datepicker-options="{closeTimer:true}"
-                   datepicker-popup="{{'yyyy-MM-dd'}}" ng-model="member.buyBackDate"
+                   datepicker-popup="{{'yyyy-MM-dd'}}" ng-model="member.buybackDate"
                    is-open="rDateCtrl.IsDateStart" close-text="关闭" >
         </div>
         <div class="form-group">
             <label class="control-label"><i>*</i>最低回购价：</label>
-            <input type="text" class="form-control" name="buyBackPrice" ng-model="member.buyBackPrice">
+            <input type="number" class="form-control" name="buybackPrice" ng-model="member.buybackPrice">
         </div>
         <div class="form-group">
             <label class="control-label"><i>*</i>年收益率：</label>
-            <input type="text" class="form-control" name="annualYield" ng-model="member.annualYield">
+            <input type="number" class="form-control" name="annualRate" ng-model="member.annualRate" placeholder="0.00">
         </div>
         <div class="form-group">
             <label class="control-label">积分：</label>
-            <input type="text" class="form-control" name="point" ng-model="member.point">
+            <input type="number" class="form-control" name="score" ng-model="member.score">
         </div>
         <div class="form-group">
             <label class="control-label">业绩奖励：</label>
-            <input type="text" class="form-control" name="award" ng-model="member.award">
+            <input type="number" class="form-control" name="bonus" ng-model="member.bonus">
         </div>
         <div class="form-group">
             <label class="control-label">盈亏提现：</label>
-            <input type="text" class="form-control" name="withdraw" ng-model="member.withdraw">
+            <input type="number" class="form-control" name="withdraw" ng-model="member.withdraw">
         </div>
         <div class="form-group">
             <label class="control-label"></label>

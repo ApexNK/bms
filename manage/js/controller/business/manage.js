@@ -87,7 +87,19 @@
                     page: 1,
                     size: 10
                 };
-                ecHttp.Post("member/list", param).then(function (data) {
+                var request = "member/list";
+                var urlParam = "";
+                for(var key in param) {
+                    urlParam += key;
+                    urlParam += "=";
+                    urlParam += param[key];
+                    urlParam += "&";
+                }
+                if(urlParam !== "") {
+                    request += "?";
+                    request += urlParam;
+                }
+                ecHttp.Post(request).then(function (data) {
                     console.info(data);
                 })
             }
@@ -105,9 +117,10 @@
 
             var addedMember = {
                 init: function () {
-                    $scope.member = {type: 0};
+                    $scope.member = {grade: 0};
                 },
                 saveMember: function () {
+                    saveMemberInfo();
                 }
             };
             var modifiedMember = {
@@ -134,8 +147,51 @@
             var currentMember = ($state.current.name == "app.business.list.modifyMember") ? modifiedMember : addedMember;
             
             $scope.addMember = function (isValid) {
+                if(!isValid) {
+                    ecHttp.ShowMessage("还有必填项未填写，请完善");
+                    return;
+                }
                 currentMember.saveMember();
             };
+            
+            $scope.checkMemberLoginName = function () {
+                if(!$scope.member.loginName) {
+                    return;
+                }
+                ecHttp.Get("member/validateName",{value:$scope.member.loginName}).then(function (data) {
+                    if(code !== 0) {
+                        ecWidget.ShowMessage("账号" + $scope.member.loginName + "已经存在，请重新设置");
+                        $scope.member.loginName = "";
+                    }
+                })
+            };
+
+            function saveMemberInfo() {
+                var param = {
+                    name:"",
+                    loginName: "",
+                    loginPassword: "",
+                    grade: 0,
+                    quantity: 0.0, //买入数量
+                    cost: 0.0,//购买成本
+                    purchaseDate:"",//买入日期
+                    currentPrice: 0, //最新价格
+                    selloutDate: "", //     转让日期，
+                    buybackDate: "",//        回购日期，
+                    buybackPrice: 0.0,//        最低回购价，
+                    annualRate: "", //        年收益率，
+                    score: 0, //        积分，
+                    bonus: 0.0, //        业绩奖励，
+                    withdraw: 0.0 //        盈亏提现
+                };
+                ecHttp.Post("member/save",$scope.member).then(function (data) {
+                    if(data.code !== 0) {
+                        ecWidget.ShowMessage(data.message);
+                        return;
+                    }
+                    $state.go("app.business.list");
+                });
+            }
 
             (function () {
                 currentMember.init();
