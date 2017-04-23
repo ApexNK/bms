@@ -2,12 +2,17 @@ import TabPage from 'VIEWS/TabPage/TabPage.vue';
 import UserCenter from 'VIEWS/TabPage/UserCenter.vue';
 import Income from 'VIEWS/TabPage/Income.vue';
 import LoginPage from 'VIEWS/LoginPage.vue';
-
+import AgentPage from 'VIEWS/AgentPage.vue';
 const routes = [
   {
-    path: '/',
-    name: 'login',
+    path: '/login',
+    name: 'Login',
     component: LoginPage
+  },
+  {
+    path: '/',
+    name: 'Agent',
+    component: AgentPage
   },
   {
     path: '/Tab',
@@ -21,7 +26,7 @@ const routes = [
       },
       {
         path: 'UserCenter',
-        name:'Tab.UserCenter',
+        name: 'Tab.UserCenter',
         component: UserCenter
       },
       {
