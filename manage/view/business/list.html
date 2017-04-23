@@ -44,8 +44,8 @@
                         <th width="8%" class="text-center">会员类型</th>
                         <th width="10%" class="text-center">购买数量</th>
                         <th width="8%" class="text-center">购买成本</th>
-                        <th width="12%" class="text-center">投资金额</th>
-                        <th width="12%" class="text-center">当前价值</th>
+                        <th width="12%" class="text-center">购买时间</th>
+                        <th width="12%" class="text-center">最新价格</th>
                         <th width="10%" class="text-center">盈亏</th>
                         <th width="8%" class="text-center">回购时间</th>
                         <th width="14%" class="text-center">操作</th>
@@ -57,19 +57,19 @@
                     </tr>
                     <tr ng-repeat="member in memberList track by $index">
                         <td class="text-center">
-                            {{member.accountId}}
+                            {{member.loginName}}
                         </td>
                         <td class="overflow-dots text-left">
                             <a title="查看详情"
                                ng-click="showMemberDetail($index)">{{member.name}}</a>
                         </td>
-                        <td class="text-center">{{member.type}}</td>
-                        <td class="text-right">{{member.purchaseAmount | number}}</td>
+                        <td class="text-center">{{memberTypes[member.grade]['name']}}</td>
+                        <td class="text-right">{{member.quantity | number}}</td>
                         <td class="text-right">{{member.cost | currency:"￥"}}</td>
-                        <td class="text-right">{{member.totalAmount | currency:"￥"}}</td>
-                        <td class="text-right">{{member.currentAmount | currency:"￥"}}</td>
+                        <td class="text-center">{{member.purchaseDate | date: "yyyy-MM-dd"}}</td>
+                        <td class="text-center">{{member.currentPrice | currency:"￥"}}</td>
                         <td class="text-right">{{member.withdraw | currency:"￥"}}</td>
-                        <td class="text-center">{{member.buyBackDate | EcDate}}</td>
+                        <td class="text-center">{{member.buybackDate | date: "yyyy-MM-dd"}}</td>
                         <td class="text-center">
                             <button class="btn btn-operate" type="button" ng-click="editMember($index)">编辑</button>
                             <button class="btn btn-operate" type="button" ng-click="showMemberDetail($index)">查看</button>

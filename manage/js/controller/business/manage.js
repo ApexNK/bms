@@ -19,6 +19,7 @@
                 TotalRows: 0,
                 PageSize: 10
             };
+            $scope.memberTypes = [{id:0, name:"劣后级"},{id:1,name:"优先级"}];
             var memberInfo = {
                 accountId: "900001",
                 name: "张董事长",
@@ -84,8 +85,8 @@
 
             function getMemberList() {
                 var param = {
-                    page: 1,
-                    size: 10
+                    page: $scope.pageInfo.CurPage || 1,
+                    size: $scope.pageInfo.PageSize || 10
                 };
                 var request = "member/list";
                 var urlParam = "";
@@ -100,7 +101,11 @@
                     request += urlParam;
                 }
                 ecHttp.Post(request).then(function (data) {
-                    console.info(data);
+                    if(data.code !== 0) {
+                        ecWidget.ShowMessage(data.message);
+                        return;
+                    }
+                    $scope.memberList = data.value.content;
                 })
             }
 
