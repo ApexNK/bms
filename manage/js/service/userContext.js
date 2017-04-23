@@ -18,18 +18,15 @@
                     $window.location.href = "index.html";
                 });
             };
-            var fnLogin = function (user, isSysAdmin) {
+            var fnLogin = function (user) {
 
                 var deferred = $q.defer();
-                var requestUrl = "Account/CheckLogin";
-                if (!!isSysAdmin && isSysAdmin) {
-                    requestUrl = "Account/CheckSoamLogin";
-                }
+                var requestUrl = "admin/login";
                 var result = ecHttp.Post(requestUrl, user);
                 result.then(function (data) {
-                        if (data.Code === 0) {
-                            fnSetUserInfo(data.Value);
-                            deferred.resolve(data.Value);
+                        if (data.code === 0) {
+                            fnSetUserInfo(data.value);
+                            deferred.resolve(data.value);
                             return;
                         }
                         deferred.reject(data.Message);

@@ -31,12 +31,10 @@
         .controller("LoginPageCtrl", ['$scope', '$window', "UserContextService", "$state", function ($scope, $window, UserContextService, $state) {
             $scope.failLogin = false;
             $scope.showFormError = false;
-            $scope.user = {"LoginName": "", "Password": ""};
-            $scope.goForgetPwd = function () {
-                $state.go("forgetPassword");
-            };
+            $scope.user = {username: "", password: ""};
+
             $scope.reset = function () {
-                $scope.user = {"LoginName": "", "Password": ""};
+                $scope.user = {username: "", password: ""};
             };
             $scope.resetMessage = function () {
                 $scope.failLogin = false;
@@ -49,23 +47,17 @@
                     $scope.showFormError = false;
                 }
 
-                var result = UserContextService.Login($scope.user, true);
+                var result = UserContextService.Login($scope.user);
                 result.then(function (data) {
+                        debugger;
                         $scope.failLogin = false;
-                        if (data.IsFirstLogin) {
-                            $scope.userinfo.loginName = data.LoginName;
-                            $scope.userinfo.UserName = data.UserName;
-                            $scope.userinfo.Id = data.Id;
-                            $state.go("firstLogin");
-                            return;
-                        }
-                        $scope.userinfo.loginName = $scope.user.LoginName;
+                        $scope.userinfo.loginName = $scope.user.username;
                         $window.location.href = "main.html";
                     },
                     function (data) {
                         $scope.failLogin = true;
                         $scope.Message = data;
-                        $scope.user.Password = "";
+                        $scope.user.password = "";
                     });
 
             };

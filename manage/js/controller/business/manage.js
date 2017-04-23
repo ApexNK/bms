@@ -82,6 +82,19 @@
                 $scope.viewFlag.showChild = !showList;
             });
 
+            function getMemberList() {
+                var param = {
+                    page: 1,
+                    size: 10
+                };
+                ecHttp.Post("member/list", param).then(function (data) {
+                    console.info(data);
+                })
+            }
+
+            (function () {
+                getMemberList();
+            })();
         }])
         .controller("AddBusinessCtrl", ['$scope', 'ecHttp', 'ecWidget', '$state', '$stateParams', 'UserContextService', function ($scope, ecHttp, ecWidget, $state, $stateParams, UserContextService) {
             $scope.memberTypes = [{id:0, name:"劣后级"},{id:1,name:"优先级"}];

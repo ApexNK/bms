@@ -20,12 +20,12 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">用户名：</label>
-                    <input type="text" name="userName" class="form-control" ec-focus ng-model="user.LoginName" required
+                    <input type="text" name="userName" class="form-control" ec-focus ng-model="user.username" required
                            ng-pattern="/^[0-9a-zA-Z\u4e00-\u9fa5\_]{1,30}$/" ng-focus="resetMessage()">
                 </div>
                 <div class="form-group">
                     <label class="control-label">密&emsp;码：</label>
-                    <input type="password" name="userPassword" class="form-control" ng-model="user.Password" required
+                    <input type="password" name="userPassword" class="form-control" ng-model="user.password" required
                            ng-focus="resetMessage()">
                 </div>
                 <div class="form-group">
