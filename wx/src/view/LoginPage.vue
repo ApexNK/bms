@@ -17,9 +17,7 @@
 </div>
 </template>
 <script>
-
-
-
+    // import { Toast } from 'mint-ui';
     export default {
       data () {
         return {
@@ -36,16 +34,26 @@
       },
       methods: {
         submit () {
-          console.log(this);
-          if(!this.username || !this.password) {
+          // console.log(Toast);
+          if (!this.username || !this.password) {
+//            Toast({
+//              message: '请输入完整用户信息',
+//              position: 'bottom',
+//              duration: 5000
+//            });
             return;
           }
           this._http.post("user/signin",{loginName:this.username,password:this.password}).then(res => {
             console.info(res);
             if (res.code === 0) {
                 this.$router.replace({name: 'Tab'});
-            }else {
-               console.info(res.message);
+            } else {
+//              Toast({
+//                message: res.message,
+//                position: 'bottom',
+//                duration: 5000
+//              });
+              // console.info(res.message);
             }
           });
            // this.$router.push('Tab');

@@ -34,11 +34,11 @@
       </li>
     </ul>
   </Scroller>
-     
+
 </template>
 
 <script>
-    
+
     import Scroller from 'components/Scroller.vue';
     export default {
       components: {
@@ -50,10 +50,12 @@
         }
       },
       mounted () {
-        
+        this._http.get("user/detail").then(res => {
+          console.info(res);
+        });
       },
       methods: {
-        
+
       }
     }
 </script>
@@ -65,7 +67,7 @@
     position: relative;
     padding-bottom: 60px;
     overflow: hidden;
-    
+
     h2{
       margin: 10px 0;
       font-size:42px;

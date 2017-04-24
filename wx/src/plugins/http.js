@@ -1,6 +1,6 @@
-import config from '../config.js';
+import {SiteURL} from '../config.js';
 
-const URL = config.SiteURL;
+const URL = SiteURL;
 let VueObj = null;
 var timer = null;
 let httpPlg = {

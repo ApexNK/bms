@@ -10,7 +10,7 @@
         <div class="col-50">数量：2000万</div>
         <div class="col-50">成本：0.5</div>
         <div class="col-50">买入日期：2017.1.1</div>
-        
+
       </div>
     </div>
     <div class="card">
@@ -21,19 +21,19 @@
         <div class="col-50">盈亏比例：<span class="warn-color">401%</span></div>
         <div class="col-50">回购日期：<span class="main-color">900001</span></div>
         <div class="col-50">最低回购价：<span class="main-color">900001</span></div>
-        
+
       </div>
     </div>
 
-    
 
-    
+
+
   </Scroller>
-     
+
 </template>
 
 <script>
-    
+
     import Scroller from 'components/Scroller.vue';
     export default {
       components: {
@@ -45,10 +45,12 @@
         }
       },
       mounted () {
-        
+        this._http.get("user/revenue").then(res => {
+          console.info(res);
+        });
       },
       methods: {
-        
+
       }
     }
 </script>
