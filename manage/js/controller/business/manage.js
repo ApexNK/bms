@@ -156,7 +156,7 @@
                     return;
                 }
                 ecHttp.Get("member/validateName",{value:$scope.member.loginName}).then(function (data) {
-                    if(code !== 0) {
+                    if(data.code !== 0) {
                         ecWidget.ShowMessage("账号" + $scope.member.loginName + "已经存在，请重新设置");
                         $scope.member.loginName = "";
                     }
@@ -201,11 +201,12 @@
             })();
         }])
         .controller("BusinessDetailCtrl", ['$scope', 'ecHttp', 'ecWidget', '$state', 'UserContextService',function ($scope, ecHttp, ecWidget, $state, UserContextService) {
+            $scope.memberTypes = [{id:0, name:"劣后级"},{id:1,name:"优先级"}];
+            $scope.currentMember = {};
 
             $scope.goBack = function () {
                 window.history.go(-1);
             };
-
             function getCurrentMemberInfo() {
                 var currentMember = $scope.$parent.getCurrentMemberData();
                 ecHttp.Get("member/show",{id:currentMember.id}).then(function (data) {
@@ -213,8 +214,8 @@
                         ecWidget.ShowMessage(data.message);
                         return;
                     }
+                    $scope.currentMember = data.value;
                 });
-                debugger;
             }
 
             (function () {

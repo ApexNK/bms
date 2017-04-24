@@ -1,7 +1,7 @@
 <template>
     <Scroller>
         <div class="row row-no-padding tab-btns">
-          
+
           <router-link class="col text-center"  to="/Tab/UserCenter">个人中心</router-link>
           <router-link class="col text-center"  to="/Tab/Income">收益概况</router-link>
         </div>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    
+
     import Scroller from 'components/Scroller.vue';
     export default {
       components: {
@@ -28,12 +28,17 @@
           transitionName: 'slide-left'
         }
       },
-       
+
       mounted () {
-        
+        this._http.get("user/revenue").then(res => {
+          console.info(res);
+        });
+        this._http.get("user/detail").then(res => {
+          console.info(res);
+        });
       },
       methods: {
-        
+
       }
     }
 </script>
@@ -41,7 +46,7 @@
   @import '~STYLE/mixin.scss';
   @import '~STYLE/common.scss';
   @import '~STYLE/components/NineGrid.scss';
-  
+
   .tab-btns {
     position: absolute;
     /* left: 15px; */
@@ -81,5 +86,5 @@
     right: 15px;
     overflow-x:hidden;
   }
-  
+
 </style>
