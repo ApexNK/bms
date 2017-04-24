@@ -33,7 +33,6 @@
             };
             
             $scope.showMemberDetail = function (index) {
-                console.info("show Member Detail !!!!");
                 $state.go("app.business.list.memberDetail");
             };
             $scope.showMemberDetail = setMemberDecorator($scope.showMemberDetail);
@@ -44,8 +43,19 @@
             $scope.editMember = setMemberDecorator($scope.editMember);
             
             $scope.deleteMember = function (index) {
-                ecWidget.ShowMessage("确定要删除****",MESG_TYPE.Ask).then(function (data) {
+                ecWidget.ShowMessage("确定要删除这个会员吗",MESG_TYPE.Ask).then(function (data) {
                     console.info(data);
+                    if(!data){
+                        return;
+                    }
+                    ecHttp.Post("member/remove?id="+currentMember.id).then(function (data) {
+                        if(data.code !== 0){
+                            ecWidget.ShowMessage(data.message);
+                            return;
+                        }
+                        $scope.memberList.splice(currentIndex,1);
+                        currentIndex = -1;
+                    })
                 });
             };
             $scope.deleteMember = setMemberDecorator($scope.deleteMember);
@@ -138,10 +148,6 @@
             var currentMember = ($state.current.name == "app.business.list.modifyMember") ? modifiedMember : addedMember;
             
             $scope.addMember = function (isValid) {
-                if(!isValid) {
-                    ecWidget.ShowMessage("还有必填项未填写，请完善");
-                    return;
-                }
                 currentMember.saveMember();
             };
             
@@ -200,8 +206,20 @@
                 window.history.go(-1);
             };
 
+            function getCurrentMemberInfo() {
+                var currentMember = $scope.$parent.getCurrentMemberData();
+                ecHttp.Get("member/show",{id:currentMember.id}).then(function (data) {
+                    if(data.code !== 0){
+                        ecWidget.ShowMessage(data.message);
+                        return;
+                    }
+                });
+                debugger;
+            }
+
             (function () {
                 UserContextService.SetParentViewStatus($scope);
+                getCurrentMemberInfo();
             })();
         }])
 })(window, window.angular);
