@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+
     <form novalidate @submit.prevent="submit" class="login-container">
       <h4 class="text-center logo">恒玖盈</h4>
       <label for="username">
@@ -13,13 +13,13 @@
         <button type="submit">验证</button>
       </label>
     </form>
-  
+
 </div>
 </template>
 <script>
-   
-    
-   
+
+
+
     export default {
       data () {
         return {
@@ -27,18 +27,29 @@
           username: ''
         };
       },
-     
+
       mounted () {
-        
+
       },
       destroyed () {
-        
+
       },
       methods: {
         submit () {
           console.log(this);
-
-          this.$router.push('Tab');
+          if(!this.username || !this.password) {
+            return;
+          }
+          this._http.post("user/sign",{loginName:this.username,password:this.password}).then(res => {
+            console.info(res);
+            window.alert(res);
+            if (res.code === 0) {
+                this.$router.replace({name: 'Tab'});
+            }else {
+               console.info(res.message);
+            }
+          });
+           // this.$router.push('Tab');
         }
       }
     }
@@ -72,7 +83,7 @@
         line-height: 40px;
         border: none;
         background:transparent;
-        
+
         &:focus{
           outline:none;
 
