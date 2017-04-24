@@ -40,9 +40,8 @@
           if(!this.username || !this.password) {
             return;
           }
-          this._http.post("user/sign",{loginName:this.username,password:this.password}).then(res => {
+          this._http.post("user/signin",{loginName:this.username,password:this.password}).then(res => {
             console.info(res);
-            window.alert(res);
             if (res.code === 0) {
                 this.$router.replace({name: 'Tab'});
             }else {
