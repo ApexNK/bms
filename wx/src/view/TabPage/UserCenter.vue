@@ -10,7 +10,7 @@
         <div class="col-50">数量：{{member.quantity}}</div>
         <div class="col-50">成本：{{toFixed(member.cost)}}元</div>
         <div class="col-50">买入日期：{{filterDate(member.purchaseDate)}}</div>
-
+        <div class="col-50">投资金额：{{toFixed(revent.investValue)}}</div>
       </div>
     </div>
     <div class="card">
@@ -55,7 +55,8 @@
           revent: {
             winLose: 0,
             winLoseRate: 0,
-            curentValue: 0
+            curentValue: 0,
+            investValue: 0
           }
         }
       },
