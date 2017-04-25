@@ -5,11 +5,20 @@
 // @import "./mint-ui.css";
 // @import './components/index.scss';
 html * {
+  outline: 0;
+  -webkit-text-size-adjust: none;
+  font-size: $baseFontSize;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+@media screen and (max-width: 320px) {
+  html * {
     outline: 0;
     -webkit-text-size-adjust: none;
-    font-size: $miniFontSize;
+    font-size: $miniFontSize - 1px;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
 }
+
 .ofh{
   overflow: hidden
 }
