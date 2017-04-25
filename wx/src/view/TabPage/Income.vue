@@ -22,7 +22,7 @@
       </li>
       <li class="item">
         <span class="">积分:</span>
-        <span class="fr warn-color">+{{memberInfo.score}}</span>
+        <span class="fr warn-color"><span v-show="memberInfo.score > 0">+</span>{{memberInfo.score}}</span>
       </li>
       <li class="item">
         <span class="">盈亏提现:</span>
