@@ -21,7 +21,7 @@
             <span>数量：{{currentMember.quantity | number}}</span>
         </div>
         <div class="col-xs-4">
-            <span>成本：{{currentMember.cost | currency:'￥'}}</span>
+            <span>成本（元）：{{currentMember.cost | currency:'￥'}}</span>
         </div>
     </div>
     <div class="col-xs-12">
@@ -30,7 +30,7 @@
         </div>
 
         <div class="col-xs-4">
-            <span>最新价格：{{currentMember.currentPrice | currency:'￥'}}</span>
+            <span>最新价格（元）：{{currentMember.currentPrice | currency:'￥'}}</span>
         </div>
         <div class="col-xs-4">
             <span>最新转让日期：{{currentMember.selloutDate | date: "yyyy-MM-dd"}}</span>
@@ -38,24 +38,24 @@
     </div>
     <div class="col-xs-12">
         <div class="col-xs-4">
-            <span>业绩奖励：{{currentMember.bonus}}</span>
+            <span>业绩奖励（元）：{{currentMember.bonus}}</span>
         </div>
         <div class="col-xs-4">
             <span>积分：{{currentMember.score}}</span>
         </div>
         <div class="col-xs-4">
-            <span>亏盈：{{currentMember.withdraw}}</span>
+            <span>盈亏（元）：{{currentMember.withdraw}}</span>
         </div>
     </div>
     <div class="col-xs-12">
         <div class="col-xs-4">
-            <span>年收益率：{{currentMember.annualRate*100}}%</span>
+            <span>年收益率（%）：{{currentMember.annualRate*100}}</span>
         </div>
         <div class="col-xs-4">
             <span>回购日期：{{currentMember.buybackDate | date: "yyyy-MM-dd"}}</span>
         </div>
         <div class="col-xs-4">
-            <span>最低回购价：{{currentMember.buybackPrice | currency:'￥'}}</span>
+            <span>最低回购价（元）：{{currentMember.buybackPrice | currency:'￥'}}</span>
         </div>
     </div>
 </div>
