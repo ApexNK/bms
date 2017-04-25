@@ -18,6 +18,7 @@
 </template>
 <script>
     // import { Toast } from 'mint-ui';
+	import { WECHAT_OPENID } from '../config.js';
     export default {
       data () {
         return {
@@ -46,7 +47,8 @@
           this._http.post("user/signin",{loginName:this.username,password:this.password}).then(res => {
             console.info(res);
             if (res.code === 0) {
-                this.$router.replace({name: 'Tab'});
+				window.location.href = WECHAT_OPENID;
+                //this.$router.replace({name: 'Tab'});
             } else {
 //              Toast({
 //                message: res.message,
