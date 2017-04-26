@@ -1,5 +1,5 @@
 import {SiteURL} from '../config.js';
-
+import showToast from 'components/Toast';
 const URL = SiteURL;
 let VueObj = null;
 var timer = null;

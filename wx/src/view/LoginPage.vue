@@ -18,6 +18,7 @@
 </template>
 <script>
     // import { Toast } from 'mint-ui';
+  import showToast from 'components/Toast';
 	import { WECHAT_OPENID } from '../config.js';
     export default {
       data () {
@@ -37,25 +38,16 @@
         submit () {
           // console.log(Toast);
           if (!this.username || !this.password) {
-//            Toast({
-//              message: '请输入完整用户信息',
-//              position: 'bottom',
-//              duration: 5000
-//            });
+            showToast({message: '请输入完整用户信息'});
             return;
           }
           this._http.post("user/signin",{loginName:this.username,password:this.password}).then(res => {
             console.info(res);
             if (res.code === 0) {
-				window.location.href = WECHAT_OPENID;
+				        window.location.href = WECHAT_OPENID;
                 //this.$router.replace({name: 'Tab'});
             } else {
-//              Toast({
-//                message: res.message,
-//                position: 'bottom',
-//                duration: 5000
-//              });
-              // console.info(res.message);
+                showToast({message: res.message()});
             }
           });
            // this.$router.push('Tab');

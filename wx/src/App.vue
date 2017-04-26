@@ -9,6 +9,7 @@
 </template>
 
 <script>
+  // import showToast from 'components/Toast';
   export default {
     data () {
       return {
@@ -22,6 +23,9 @@
         this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
       }
     },
+    mounted () {
+      // showToast({message: 'chenggong'});
+    }
   }
 </script>
 <style lang="scss">
