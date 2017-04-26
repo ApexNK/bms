@@ -10,14 +10,14 @@
         <div class="col-50">数量：<span class="main-color">{{member.quantity}}</span></div>
         <div class="col-50">成本：<span class="main-color">{{toFixed(member.cost)}}</span>元</div>
         <div class="col-50">买入日期：<span class="main-color">{{filterDate(member.purchaseDate)}}</span></div>
-        <div class="col-50">投资金额：<span class="main-color">{{toFixed(revent.investValue)}}</span></div>
+        <div class="col-50">投资金额：<span class="main-color">{{toFixed(revent.investValue)}}元</span></div>
       </div>
     </div>
     <div class="card">
       <div class="row row-no-padding row-wrap">
         <div class="col-50">最新价格：<span class="warn-color">{{toFixed(member.currentPrice)}}</span></div>
         <div class="col-50">当前价值：<span class="main-color">{{toFixed(revent.curentValue)}}元</span></div>
-        <div class="col-50">盈亏：<span class="warn-color">{{toFixed(revent.winLose)}}</span></div>
+        <div class="col-50">盈亏：<span class="warn-color">{{toFixed(revent.winLose)}}元</span></div>
         <div class="col-50">盈亏比例：<span class="warn-color">{{toFixed(revent.winLoseRate * 100)}}%</span></div>
         <div class="col-50">回购日期：<span class="main-color">{{filterDate(member.buybackDate)}}</span></div>
         <div class="col-50">最低回购价：<span class="main-color">{{toFixed(member.buybackPrice)}}元</span></div>
@@ -42,7 +42,7 @@
           member: {
             name:"",
             loginName:"",
-            grand: 0,
+            grade: 0,
             quantity: 0,
             cost: 0,
             purchaseDate: "",
