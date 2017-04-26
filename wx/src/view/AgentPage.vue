@@ -14,7 +14,7 @@
     },
 
     mounted () {
-       // window.location.href = WECHAT_OPENID;
+       window.location.href = WECHAT_OPENID;
       // location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd2124dd20a541894&redirect_uri=http%3a%2f%2fhjy.tunnel.2bdata.com%2fwechat%2fgrant&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
     },
     destroyed () {

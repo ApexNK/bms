@@ -30,12 +30,6 @@
       },
 
       mounted () {
-        this._http.get("user/revenue").then(res => {
-          console.info(res);
-        });
-        this._http.get("user/detail").then(res => {
-          console.info(res);
-        });
       },
       methods: {
 

@@ -2,15 +2,15 @@
   <Scroller>
     <div class="card">
       <div class="row row-no-padding row-wrap">
-        <div class="col-50">账号：{{member.loginName}}</div>
-        <div class="col-50">姓名：{{member.name}}</div>
-        <div class="col-50">代码：690891</div>
-        <div class="col-50">名称：恒玖盈</div>
-        <div class="col-50">类型：{{member.grand ? "优先级" : "劣后级"}}</div>
-        <div class="col-50">数量：{{member.quantity}}</div>
-        <div class="col-50">成本：{{toFixed(member.cost)}}元</div>
-        <div class="col-50">买入日期：{{filterDate(member.purchaseDate)}}</div>
-        <div class="col-50">投资金额：{{toFixed(revent.investValue)}}</div>
+        <div class="col-50">账号：<span class="main-color">{{member.loginName}}</span></div>
+        <div class="col-50">姓名：<span class="main-color">{{member.name}}</span></div>
+        <div class="col-50">代码：<span class="main-color">690891</span></div>
+        <div class="col-50">名称：<span class="main-color">恒玖盈</span></div>
+        <div class="col-50">类型：<span class="main-color">{{gradeName[member.grade]}}</span></div>
+        <div class="col-50">数量：<span class="main-color">{{member.quantity}}</span></div>
+        <div class="col-50">成本：<span class="main-color">{{toFixed(member.cost)}}</span>元</div>
+        <div class="col-50">买入日期：<span class="main-color">{{filterDate(member.purchaseDate)}}</span></div>
+        <div class="col-50">投资金额：<span class="main-color">{{toFixed(revent.investValue)}}</span></div>
       </div>
     </div>
     <div class="card">
@@ -21,10 +21,8 @@
         <div class="col-50">盈亏比例：<span class="warn-color">{{toFixed(revent.winLoseRate * 100)}}%</span></div>
         <div class="col-50">回购日期：<span class="main-color">{{filterDate(member.buybackDate)}}</span></div>
         <div class="col-50">最低回购价：<span class="main-color">{{toFixed(member.buybackPrice)}}元</span></div>
-
       </div>
     </div>
-
 
   </Scroller>
 
@@ -40,6 +38,7 @@
       data () {
         return {
           curState: 'userCenter',
+          gradeName: ['劣后级','优先级'],
           member: {
             name:"",
             loginName:"",
@@ -83,14 +82,15 @@
       });
       },
       methods: {
-        toFixed(value){
-          var temp = value + "";
-          let index  = temp.indexOf(".");
-          if(index < 0 ) {
-            return (value + ".00");
+        toFixed(value, isSymbol){
+          var result = value.toFixed(2);
+          if(!isSymbol){
+            return result;
           }
-          let str = temp.substring(0,temp.indexOf(".") + 3);
-          return str;
+          if(result > 0){
+            return ("+" + result);
+          }
+          return result;
         },
         filterDate(value){
           if(!value){

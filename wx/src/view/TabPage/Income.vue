@@ -5,14 +5,14 @@
       <h2 class="text-center warn-color">{{toFixed(memberInfo.totalRevenue)}}</h2>
       <div class="total-bar row row-no-padding">
         <div class="col">
-          今日收益<br/>
-          <span class="warn-color">{{memberInfo.dailyRevenue > -0.0001 ? ("+" + toFixed(memberInfo.dailyRevenue)) : ("-" + toFixed(memberInfo.dailyRevenue))}}</span>
+          今日收益(元)<br/>
+          <span class="warn-color">{{toFixed(memberInfo.dailyRevenue,true)}}</span>
           </div>
         <div class="col">
-          当月累计收益<br/>
-          <span class="warn-color">+{{toFixed(memberInfo.monthlyRevenue)}}</span>
+          当月收益(元)<br/>
+          <span class="warn-color">{{toFixed(memberInfo.monthlyRevenue,true)}}</span>
           </div>
-        <div class="col">业绩奖励<br/><span class="warn-color">+{{toFixed(memberInfo.bonus)}}</span></div>
+        <div class="col">业绩奖励(元)<br/><span class="warn-color">{{toFixed(memberInfo.bonus,true)}}</span></div>
       </div>
     </div>
     <ul class="list">
@@ -26,11 +26,11 @@
       </li>
       <li class="item">
         <span class="">盈亏提现:</span>
-        <span class="fr warn-color">+{{toFixed(memberInfo.withdraw)}} </span>
+        <span class="fr warn-color">{{toFixed(memberInfo.withdraw,true)}}元 </span>
       </li>
       <li class="item">
         <span class="">总提现金额:</span>
-        <span class="fr warn-color">{{toFixed(memberInfo.totalWithdraw)}}</span>
+        <span class="fr warn-color">{{toFixed(memberInfo.totalWithdraw)}}元</span>
       </li>
     </ul>
   </Scroller>
@@ -74,14 +74,15 @@
         });
       },
       methods: {
-        toFixed(value){
-          var temp = value + "";
-          let index  = temp.indexOf(".");
-          if(index < 0 ) {
-            return (value + ".00");
+        toFixed(value, isSymbol){
+          var result = value.toFixed(2);
+          if(!isSymbol){
+            return result;
           }
-          let str = temp.substring(0,temp.indexOf(".") + 3);
-          return str;
+          if(result > 0){
+            return ("+" + result);
+          }
+          return result;
         }
       }
     }
