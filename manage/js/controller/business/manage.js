@@ -126,7 +126,7 @@
 
             var addedMember = {
                 init: function () {
-                    $scope.member = {grade: 0};
+                    $scope.member = {grade: 0, isAdded: true};
                 },
                 saveMember: function () {
                     saveMemberInfo();
@@ -135,6 +135,7 @@
             var modifiedMember = {
                 init: function () {
                     $scope.member = $scope.$parent.getCurrentMemberData();
+                    $scope.member.isAdded = false;
                     if(!$scope.member) {
                         $state.go("app.business.list");
                         return;
@@ -181,7 +182,13 @@
                     bonus: 0.0, //        业绩奖励，
                     withdraw: 0.0 //        盈亏提现
                 };
-                ecHttp.Post("member/save",$scope.member).then(function (data) {
+                if ( !$scope.member.annualRate || $scope.member.annualRate < 0.00001) {
+                    ecWidget.ShowToaster("warning","提示","年利率输入不合法，请重新输入");
+                    return;
+                }
+                var param = angular.copy($scope.member);
+                param.annualRate = (param.annualRate/100);
+                ecHttp.Post("member/save",param).then(function (data) {
                     if(data.code !== 0) {
                         ecWidget.ShowMessage(data.message);
                         return;

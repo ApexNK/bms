@@ -59,7 +59,8 @@
         </div>
         <div class="form-group">
             <label class="control-label"><i>*</i>年收益率（%）：</label>
-            <input type="number" class="form-control" name="annualRate" ng-model="member.annualRate" placeholder="00.00" required>
+            <input type="number" ng-if="member.isAdded" class="form-control" name="annualRate" ng-model="member.annualRate" placeholder="00.00" required>
+            <div ng-if="!member.isAdded" class="form-control">{{member.annualRate * 100}}</div>
         </div>
         <div class="form-group">
             <label class="control-label">积分：</label>
