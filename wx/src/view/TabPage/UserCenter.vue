@@ -10,7 +10,7 @@
         <div class="col-50">数量：<span class="main-color">{{member.quantity}}</span></div>
         <div class="col-50">成本：<span class="main-color">{{toFixed(member.cost)}}</span>元</div>
         <div class="col-50">买入日期：<span class="main-color">{{filterDate(member.purchaseDate)}}</span></div>
-        <div class="col-50">投资金额：<span class="main-color">{{toFixed(revent.investValue)}}元</span></div>
+        <div class="col-80">投资金额：<span class="main-color">{{toFixed(revent.investValue)}}元</span></div>
       </div>
     </div>
     <div class="card">
