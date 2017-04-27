@@ -15,7 +15,7 @@
     </div>
     <div class="card">
       <div class="row row-no-padding row-wrap">
-        <div class="col-50">最新价格：<span class="warn-color">{{toFixed(member.currentPrice)}}</span></div>
+        <div class="col-50">最新价格：<span class="warn-color">{{toFixed(member.currentPrice)}}元</span></div>
         <div class="col-50">当前价值：<span class="main-color">{{toFixed(revent.curentValue)}}元</span></div>
         <div class="col-50">盈亏：<span class="warn-color">{{toFixed(revent.winLose)}}元</span></div>
         <div class="col-50">盈亏比例：<span class="warn-color">{{toFixed(revent.winLoseRate * 100)}}%</span></div>
