@@ -8,19 +8,19 @@
         <div class="col-50">名称：<span class="main-color">恒玖盈</span></div>
         <div class="col-50">类型：<span class="main-color">{{gradeName[member.grade]}}</span></div>
         <div class="col-50">数量：<span class="main-color">{{member.quantity}}</span></div>
-        <div class="col-50">成本：<span class="main-color">{{toFixed(member.cost)}}元</span></div>
+        <div class="col-50">成本：<span class="main-color">{{(member.cost)}}元</span></div>
         <div class="col-50">买入日期：<span class="main-color">{{filterDate(member.purchaseDate)}}</span></div>
-        <div class="col-80">投资金额：<span class="main-color">{{toFixed(revent.investValue)}}元</span></div>
+        <div class="col-80">投资金额：<span class="main-color">{{(revent.investValue)}}元</span></div>
       </div>
     </div>
     <div class="card">
       <div class="row row-no-padding row-wrap">
-        <div class="col-50">最新价格：<span class="warn-color">{{toFixed(member.currentPrice)}}元</span></div>
-        <div class="col-50">当前价值：<span class="main-color">{{toFixed(revent.curentValue)}}元</span></div>
-        <div class="col-50">盈亏：<span class="warn-color">{{toFixed(revent.winLose)}}元</span></div>
-        <div class="col-50">盈亏比例：<span class="warn-color">{{toFixed(revent.winLoseRate * 100)}}%</span></div>
+        <div class="col-50">最新价格：<span class="warn-color">{{(member.currentPrice)}}元</span></div>
+        <div class="col-50">当前价值：<span class="main-color">{{revent.curentValue}}元</span></div>
+        <div class="col-50">盈亏：<span class="warn-color">{{(revent.winLose)}}元</span></div>
+        <div class="col-50">盈亏比例：<span class="warn-color">{{(revent.winLoseRate * 100)}}%</span></div>
         <div class="col-50">回购日期：<span class="main-color">{{filterDate(member.buybackDate)}}</span></div>
-        <div class="col-50">最低回购价：<span class="main-color">{{toFixed(member.buybackPrice)}}元</span></div>
+        <div class="col-50">最低回购价：<span class="main-color">{{(member.buybackPrice)}}元</span></div>
       </div>
     </div>
 

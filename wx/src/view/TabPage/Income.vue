@@ -2,23 +2,23 @@
   <Scroller>
     <div class="card dashboard">
       <div class="text-center">总收益(元)</div>
-      <h2 class="text-center warn-color">{{toFixed(memberInfo.totalRevenue)}}</h2>
+      <h2 class="text-center warn-color">{{memberInfo.totalRevenue}}</h2>
       <div class="total-bar row row-no-padding">
         <div class="col">
           今日收益(元)<br/>
-          <span class="warn-color">{{toFixed(memberInfo.dailyRevenue,true)}}</span>
+          <span class="warn-color">{{memberInfo.dailyRevenue}}</span>
           </div>
         <div class="col">
           当月收益(元)<br/>
-          <span class="warn-color">{{toFixed(memberInfo.monthlyRevenue,true)}}</span>
+          <span class="warn-color">{{memberInfo.monthlyRevenue}}</span>
           </div>
-        <div class="col">业绩奖励(元)<br/><span class="warn-color">{{toFixed(memberInfo.bonus,true)}}</span></div>
+        <div class="col">业绩奖励(元)<br/><span class="warn-color">{{memberInfo.bonus}}</span></div>
       </div>
     </div>
     <ul class="list">
       <li class="item">
         <span class="">投资收益率:</span>
-        <span class="fr main-color">{{toFixed(memberInfo.revenueRate*100)}}%</span>
+        <span class="fr main-color">{{(memberInfo.revenueRate*100)}}%</span>
       </li>
       <li class="item">
         <span class="">积分:</span>
@@ -26,11 +26,11 @@
       </li>
       <li class="item">
         <span class="">盈亏提现:</span>
-        <span class="fr warn-color">{{toFixed(memberInfo.withdraw,true)}}元 </span>
+        <span class="fr warn-color">{{memberInfo.withdraw}}元 </span>
       </li>
       <li class="item">
         <span class="">总提现金额:</span>
-        <span class="fr warn-color">{{toFixed(memberInfo.totalWithdraw)}}元</span>
+        <span class="fr warn-color">{{memberInfo.totalWithdraw}}元</span>
       </li>
     </ul>
   </Scroller>
