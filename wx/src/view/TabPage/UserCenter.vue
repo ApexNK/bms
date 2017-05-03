@@ -15,12 +15,13 @@
     </div>
     <div class="card">
       <div class="row row-no-padding row-wrap">
-        <div class="col-50">最新价格：<span class="warn-color">{{(member.currentPrice)}}元</span></div>
-        <div class="col-50">当前价值：<span class="main-color">{{revent.curentValue}}元</span></div>
-        <div class="col-50">盈亏：<span class="warn-color">{{(revent.winLose)}}元</span></div>
-        <div class="col-50">盈亏比例：<span class="warn-color">{{(revent.winLoseRate * 100)}}%</span></div>
+        <div class="col-50">最新价格：<span class="warn-color">{{member.currentPrice}}元</span></div>
+        <div class="col-50" v-if="revent.curentValue <= 1000000">当前价值：<span class="main-color">{{revent.curentValue}}元</span></div>
+		<div class="col-50" v-else style="margin-left:-12px;">当前价值：<span class="main-color" style="margin-left:-8px;">{{revent.curentValue}}元</span></div>
+        <div class="col-50">盈亏：<span class="warn-color">{{toInt(revent.winLose)}}元</span></div>
+        <div class="col-50">盈亏比例：<span class="warn-color">{{toFixed(revent.winLoseRate * 100)}}%</span></div>
         <div class="col-50">回购日期：<span class="main-color">{{filterDate(member.buybackDate)}}</span></div>
-        <div class="col-50">最低回购价：<span class="main-color">{{(member.buybackPrice)}}元</span></div>
+        <div class="col-50">最低回购价：<span class="main-color">{{member.buybackPrice}}元</span></div>
       </div>
     </div>
 
@@ -83,6 +84,9 @@
       },
       methods: {
         toFixed(value, isSymbol){
+          if(!value){
+            return 0.00;
+          }
           var result = value.toFixed(2);
           if(!isSymbol){
             return result;
@@ -101,6 +105,12 @@
           let M = (date.getMonth()+1) + '.';
           let D = date.getDate();
           return (Y+M+D);
+        },
+        toInt(value){
+          if(!value){
+            return 0;
+          }
+          return parseInt(value);
         }
       }
     }

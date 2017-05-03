@@ -2,23 +2,23 @@
   <Scroller>
     <div class="card dashboard">
       <div class="text-center">总收益(元)</div>
-      <h2 class="text-center warn-color">{{memberInfo.totalRevenue}}</h2>
+      <h2 class="text-center warn-color">{{toInt(memberInfo.totalRevenue)}}</h2>
       <div class="total-bar row row-no-padding">
         <div class="col">
           今日收益(元)<br/>
-          <span class="warn-color">{{memberInfo.dailyRevenue}}</span>
+          <span class="warn-color">{{toInt(memberInfo.dailyRevenue)}}</span>
           </div>
         <div class="col">
           当月收益(元)<br/>
-          <span class="warn-color">{{memberInfo.monthlyRevenue}}</span>
+          <span class="warn-color">{{toInt(memberInfo.monthlyRevenue)}}</span>
           </div>
-        <div class="col">业绩奖励(元)<br/><span class="warn-color">{{memberInfo.bonus}}</span></div>
+        <div class="col">业绩奖励(元)<br/><span class="warn-color">{{toInt(memberInfo.bonus)}}</span></div>
       </div>
     </div>
     <ul class="list">
       <li class="item">
         <span class="">投资收益率:</span>
-        <span class="fr main-color">{{(memberInfo.revenueRate*100)}}%</span>
+        <span class="fr main-color">{{toFixed(memberInfo.revenueRate*100)}}%</span>
       </li>
       <li class="item">
         <span class="">积分:</span>
@@ -26,11 +26,11 @@
       </li>
       <li class="item">
         <span class="">盈亏提现:</span>
-        <span class="fr warn-color">{{memberInfo.withdraw}}元 </span>
+        <span class="fr warn-color">{{toInt(memberInfo.withdraw)}}元 </span>
       </li>
       <li class="item">
         <span class="">总提现金额:</span>
-        <span class="fr warn-color">{{memberInfo.totalWithdraw}}元</span>
+        <span class="fr warn-color">{{toInt(memberInfo.totalWithdraw)}}元</span>
       </li>
     </ul>
   </Scroller>
@@ -75,6 +75,9 @@
       },
       methods: {
         toFixed(value, isSymbol){
+          if(!value){
+            return 0.00;
+          }
           var result = value.toFixed(2);
           if(!isSymbol){
             return result;
@@ -83,6 +86,12 @@
             return ("+" + result);
           }
           return result;
+        },
+        toInt(value){
+          if(!value){
+            return 0;
+          }
+          return parseInt(value);
         }
       }
     }
