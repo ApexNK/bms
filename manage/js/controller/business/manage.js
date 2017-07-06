@@ -107,6 +107,8 @@
                         return;
                     }
                     $scope.memberList = data.value.content;
+                    $scope.pageInfo.TotalRows = data.value.totalElements;
+                    $scope.pageInfo.TotalPages = data.value.totalPages;
                 })
             }
 
@@ -187,7 +189,8 @@
                     return;
                 }
                 var param = angular.copy($scope.member);
-                param.annualRate = (param.annualRate/100);
+                //param.annualRate = (param.annualRate/100);
+                param.annualRate = Math.floor(param.annualRate * 100) / 10000;
                 ecHttp.Post("member/save",param).then(function (data) {
                     if(data.code !== 0) {
                         ecWidget.ShowMessage(data.message);
